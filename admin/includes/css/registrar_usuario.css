@@ -1,0 +1,13 @@
+th, td {
+    border-right: 1px solid #D1D5DB; 
+    border-bottom: 1px solid #D1D5DB; 
+}
+th:last-child, td:last-child {
+    border-right: none;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+table {
+    border: 1px solid #D1D5DB;
+}

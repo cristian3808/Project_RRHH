@@ -1,0 +1,30 @@
+/* Estilos para los contenedores de los proyectos */
+.project-container {
+    position: relative;
+    max-height: 90px; /* Altura mínima ajustada */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+/* Estilo para los botones */
+.project-buttons {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        bottom: 0; /* Ajustamos la posición a la parte inferior del contenedor */
+        left: 50%;
+        transform: translateX(-50%);
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        padding: 5px;
+    }
+/* Mostrar los botones y expandir el contenedor al hacer hover */
+.project-container:hover {
+    max-height: 150px; /* Altura máxima cuando el cursor pasa sobre el proyecto */
+}
+.project-container:hover .project-buttons {
+    opacity: 1;
+    visibility: visible;
+}
+/* Separación de los botones del título */
+.project-container .title {
+    margin-bottom: 40px; /* Espacio entre el título y los botones */
+}
