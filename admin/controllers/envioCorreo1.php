@@ -14,8 +14,8 @@ function enviarCorreoConLink($correo, $link) {
     $mail->isSMTP();             // Establecer el uso de SMTP
     $mail->Host = 'smtp.gmail.com'; // Servidor SMTP de Gmail
     $mail->SMTPAuth = true;         // Habilitar la autenticación SMTP
-    $mail->Username = 'pruebassoftaware@gmail.com'; // Tu dirección de correo
-    $mail->Password = 'xxealzeedcuxqdzq'; // Contraseña de la aplicación generada en Google
+    $mail->Username = 'pruebasoftwarerc@gmail.com';
+    $mail->Password = 'abkgbjoekgsvhtnj'; // Contraseña de la aplicación generada en Google
     $mail->SMTPSecure = 'tls';      // Encriptación TLS
     $mail->Port = 587;              // Puerto para TLS
     
