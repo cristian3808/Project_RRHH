@@ -47,55 +47,11 @@ $conn->close();
                 <input id="apellidos" name="apellidos" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs " maxlength="30" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-4">2. Género</label>
-                <select id="genero" name="genero" class="border border-gray-300 rounded py-1 px-2 text-sm -mt-[15px]" required>
-                    <option value="">Selecciona tu género</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="femenino">Femenino</option>
-                </select>
-            </div>
-            <div class="flex flex-col">
                 <label class="custom-font text-xs mb-1 ">3. Cédula</label>
                 <input name="cedula" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" maxlength="10" required>
             </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">4. Teléfono</label>
-                <input name="telefono" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">5. Fecha de nacimiento</label>
-                <input name="fecha_nacimiento" type="date" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">6. Fecha de expedición de la cédula</label>
-                <input name="fecha_expedicion_cedula" type="date" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col">
-                <label for="lugar_nacimiento" class="custom-font text-xs mb-1">7. Lugar de nacimiento</label>
-                <select id="lugar_nacimiento" name="lugar_nacimiento"
-                    class="border border-gray-300 rounded py-1 px-2 text-xs appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    aria-placeholder="ola" required>
-                    <option value=""></option>
-                </select>
-            </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">8. Dirección</label>
-                <input type="text" id="direccion" name="direccion" class="border border-gray-300 rounded py-1 px-2 text-xs" placeholder="Selecciona..." readonly onclick="abrirModalDireccion()" required>
-            </div>
             <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">9. Correo</label>
-                <input name="correo" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">10. Municio de residencia</label>
-                <select id="municipio_residencia" name="municipio_residencia"
-                    class="border border-gray-300 rounded py-1 px-2 text-xs appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    aria-placeholder="ola" required>
-                    <option value=""></option>
-                </select>
-            </div>
-            <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">11. Tipo de sangre</label>
+                <label class="custom-font text-xs mb-1">4. Tipo de sangre</label>
                 <select name="tipo_sangre" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value="" disabled selected>Selecciona tu tipo de sangre</option>
                     <option value="A+">A+</option>
@@ -109,18 +65,77 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs ">12. EPS</label>
-                <input name="eps" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs uppercase" required>
+                <label class="custom-font text-xs mb-1">5. Fecha de nacimiento</label>
+                <input name="fecha_nacimiento" type="date" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+            <div class="flex flex-col">
+                <label for="lugar_nacimiento" class="custom-font text-xs mb-1">7. Lugar de nacimiento</label>
+                <select id="lugar_nacimiento" name="lugar_nacimiento"
+                    class="border border-gray-300 rounded py-1 px-2 text-xs appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    aria-placeholder="ola" required>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">8. Fecha de expedición de la cédula</label>
+                <input name="fecha_expedicion_cedula" type="date" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-sm mb-4">9. Género</label>
+                <select id="genero" name="genero" class="border border-gray-300 rounded py-1 px-2 text-sm -mt-[15px]" required>
+                    <option value="">Selecciona tu género</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">10. Teléfono</label>
+                <input name="telefono" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">13. Contacto en caso de emergencia</label>
-                <input name="nombre_contacto" type="text" placeholder="Nombre" class="border border-gray-300 rounded py-1 px-2 text-xs mb-2" required>
-                <input name="telefono_contacto" type="text" placeholder="Teléfono" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+                <label class="custom-font text-xs mb-1">11. Correo</label>
+                <input name="correo" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
-            
-           
             <div class="flex flex-col">
-                <label class="custom-font text-xs -mt-[-1px]">14. AFP FONDO DE PENSIONES</label>
+                <label class="custom-font text-xs mb-1">12. Dirección</label>
+                <input type="text" id="direccion" name="direccion" class="border border-gray-300 rounded py-1 px-2 text-xs" placeholder="Selecciona..." readonly onclick="abrirModalDireccion()" required>
+            </div>
+            <div class="flex flex-col ">
+                <label class="custom-font text-xs mb-1">13. Ciudad de residencia</label>
+                <select id="municipio_residencia" name="municipio_residencia"
+                    class="border border-gray-300 rounded py-1 px-2 text-xs appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    aria-placeholder="ola" required>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs">14. EPS</label>
+                <select name="eps" class="border border-gray-300 rounded py-1 px-2 text-xs uppercase" required>
+                    <option value="" disabled selected>Selecciona una EPS</option>
+                    <option value="NUEVA EPS">NUEVA EPS</option>
+                    <option value="SANITAS">SANITAS</option>
+                    <option value="SURA">SURA</option>
+                    <option value="COMPENSAR">COMPENSAR</option>
+                    <option value="SALUD TOTAL">SALUD TOTAL</option>
+                    <option value="COOSALUD">COOSALUD</option>
+                    <option value="FAMISANAR">FAMISANAR</option>
+                    <option value="CAPITAL SALUD">CAPITAL SALUD</option>
+                    <option value="MUTUAL SER">MUTUAL SER</option>
+                    <option value="ECOOPSOS">ECOOPSOS</option>
+                    <option value="ASMET SALUD">ASMET SALUD</option>
+                    <option value="EMSSANAR">EMSSANAR</option>
+                    <option value="DUSAKAWI">DUSAKAWI</option>
+                    <option value="SAVIA SALUD">SAVIA SALUD</option>
+                    <option value="NUEVA EPS">NUEVA EPS</option>
+                    <option value="ALIANSALUD">ALIANSALUD</option>
+                    <option value="FOSYGA">FOSYGA</option>
+                    <option value="CONFACUNDI">CONFACUNDI</option>
+                    <option value="CAPRESOCA">CAPRESOCA</option>
+                    <option value="CAJACOPI">CAJACOPI</option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs -mt-[-1px]">15. AFP FONDO DE PENSIONES</label>
                 <select name="fondo_pension" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value=""disable selected>Selecciona tu AFP</option>
                     <option value="Porvenir">Porvenir</option>
@@ -136,52 +151,57 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs ">15. ARL</label>
+                <label class="custom-font text-xs ">16. ARL</label>
                 <input name="arl" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs bg-zinc-200" value="AXA COLPATRIA" readonly required>
-            </div><br>
+            </div>
+            <div class="flex flex-col ">
+                <label class="custom-font text-xs mb-1">17. Contacto en caso de emergencia</label>
+                <input name="nombre_contacto" type="text" placeholder="Nombre" class="border border-gray-300 rounded py-1 px-2 text-xs mb-2" required>
+                <input name="telefono_contacto" type="text" placeholder="Teléfono" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
         </div>
         <h1 class="text-left font-bold text-lg md:text-xl mt-[10px] mb-5">
             Por favor subir los Documentos en <span class="text-red-600">(PDF)</span>.
         </h1>
         <div class=" grid gap-4 grid-cols-1 md:grid-cols-4"> 
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">16. Hoja de vida actual.<br>(Máximo 3 Hojas)</label>
+                <label class="custom-font text-xs mb-1">18. Hoja de vida actual.<br>(Máximo 3 Hojas)</label>
                 <input name="hoja_vida" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">17. Cédula.<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">19. Cédula.<br>(Máximo 1 Hoja)</label>
                 <input name="subir_cedula" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-5">18. Certificados de estudio </label>
+                <label class="custom-font text-xs mb-5">20. Certificados de estudio </label>
                 <input name="certificados_estudio" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-5">19. Certificados laborales</label>
+                <label class="custom-font text-xs mb-5">21. Certificados laborales</label>
                 <input name="certificados_laborales" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">20. Foto fondo blanco (3x4)<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">22. Foto fondo blanco (3x4)<br>(Máximo 1 Hoja)</label>
                 <input name="foto" type="file" accept="image/jpg, image/jpeg, image/png" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">21. Certificado EPS<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">23. Certificado EPS<br>(Máximo 1 Hoja)</label>
                 <input name="certificados_eps" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">22. Carnet vacunas<br>(Máximo 5 Hojas)</label>
+                <label class="custom-font text-xs mb-1">24. Carnet vacunas<br>(Máximo 5 Hojas)</label>
                 <input name="carnet_vacunas" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">23. Certificacion bancaria<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">25. Certificacion bancaria<br>(Máximo 1 Hoja)</label>
                 <input name="certificacion_bancaria" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">24. Certificado antecedentes<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">26. Certificado antecedentes<br>(Máximo 1 Hoja)</label>
                 <input name="certificado_antecedentes" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">25. Certificado AFP<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">27. Certificado AFP<br>(Máximo 1 Hoja)</label>
                 <input name="certificado_afp" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
@@ -272,7 +292,7 @@ $conn->close();
     </div>
 </form>
 <!-- Botón para abrir el modal -->
-<button id="btnAbrirModal" class="bg-[#EAE9E5] text-black px-4 py-2 border-2 border-black rounded flex items-center space-x-2 relative top-[280px] left-[-270px]">
+<button id="btnAbrirModal" class="bg-[#EAE9E5] text-black px-4 py-2 border-2 border-black rounded flex items-center space-x-2 relative top-[260px] left-[-270px]">
     <img src="/admin/includes/imgs/guia_tallas.png" alt="" class="w-6 h-6"> <!-- Tamaño de la imagen ajustado -->
     <span>Ver Guia De Tallas</span> <!-- El texto -->
 </button>
@@ -505,7 +525,6 @@ $conn->close();
                             <option value="Z">Z</option>
                         </select>
                     </div>
-                    
                     <div >
                         <label for="cardinalidad1" class="block text-sm font-medium text-gray-700">Cardinalidad :</label>
                         <select id="cardinalidad1" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">

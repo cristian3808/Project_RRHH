@@ -30,13 +30,13 @@ function enviarCorreoConLink($correo, $link) {
         // Configurar el correo
         $mail->isHTML(true); // Configurar el correo como HTML
         $mail->CharSet = 'UTF-8'; // Establecer la codificación de caracteres como UTF-8 para permitir caracteres especiales
-        $mail->Subject = 'Fwd: Solicitud Documentación Técnico de Levantamiento (Activos Fijos) - CARACARA / TF Auditores y Asesores S.A.S. BIC'; // Asunto del correo
+        $mail->Subject = 'Solicitud Documentación Proceso de Selección / TF Auditores y Asesores S.A.S. BIC'; // Asunto del correo
         
       // Cuerpo del correo con el mensaje completo (incluyendo la imagen)
-        $mail->Body = "<p>Buenas tardes</p>
-        <p>Estimado(a) Aspirante,</p>
+        $mail->Body = "<p>Buen día</p>
+        <p>Estimado (a) Aspirante,</p>
         <p>Cordial saludo.</p>
-        <p>Para continuar con el proceso de selección, le solicitamos que envíe a la mayor brevedad la siguiente documentación a través del formulario indicado:</p>
+        <p>Dando continuidad al proceso de selección, agradecemos nos envíe en su mayor brevedad y por este medio la siguiente información; la cual entraría en proceso de revisión y validación:</p>
         <ul>
             <li>Hoja de vida actualizada</li>
             <li>Fotocopia de la cédula ampliada al 150% (Legible)</li>
