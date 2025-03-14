@@ -128,10 +128,12 @@ if (mysqli_num_rows($result) > 0) {
             </button>
 
             <h2 class="text-xl font-semibold text-center mb-4">Selecciona los usuarios para enviar el correo</h2>
-            <form action="../controllers/envioCorreo1.php?anio_id=<?php echo $anio_id; ?>" method="POST">
+            <form id="miFormulario" action="../controllers/envioCorreo1.php?anio_id=<?php echo $anio_id; ?>" method="POST" onsubmit="resetForm(event)">
                 <div class="mb-4">
                     <label for="usuarios" class="block text-lg font-medium text-gray-700">Usuarios:</label>
-                    <div class="mt-2">
+                    
+                    <!-- Contenedor con scroll -->
+                    <div class="mt-2 overflow-y-auto max-h-[550px] border border-gray-300 p-2 rounded-md">
                         <?php
                             // Incluir el archivo de configuración para la conexión a la base de datos
                             include('../../config/db.php');
@@ -144,11 +146,14 @@ if (mysqli_num_rows($result) > 0) {
                                 $stmt->execute();
                                 $result = $stmt->get_result();
 
-                                // Iterar sobre los resultados y crear los checkboxes
+                                // Iterar sobre los resultados y crear los checkboxes + input de asunto en columna
                                 while ($row = $result->fetch_assoc()) {
-                                    echo '<div class="flex items-center mb-2">';
-                                    echo '<input type="checkbox" name="usuarios[]" value="' . $row['correo'] . '" id="usuario_' . $row['id'] . '" class="h-5 w-5 text-green-900 focus:ring-0">';
-                                    echo '<label for="usuario_' . $row['id'] . '" class="ml-2 text-gray-700">' . $row['nombres'] . ' ' . $row['apellidos'] . ' (' . $row['correo'] . ')</label>';
+                                    echo '<div class="flex flex-col mb-2 p-2 border border-gray-200 rounded-lg">';
+                                    echo '  <div class="flex items-center">';
+                                    echo '      <input type="checkbox" name="usuarios[]" value="' . $row['correo'] . '" id="usuario_' . $row['id'] . '" class="h-5 w-5 text-green-900 focus:ring-0">';
+                                    echo '      <label for="usuario_' . $row['id'] . '" class="ml-2 text-gray-700">' . $row['nombres'] . ' ' . $row['apellidos'] . ' (' . $row['correo'] . ')</label>';
+                                    echo '  </div>';
+                                    echo '  <input type="text" name="asunto[' . $row['correo'] . ']" placeholder="Asunto" class="mt-2 p-2 border border-gray-300 rounded w-full">';
                                     echo '</div>';
                                 }
                             }
@@ -159,8 +164,28 @@ if (mysqli_num_rows($result) > 0) {
                     <input type="submit" value="Enviar Correo" class="bg-[#2FA74D] text-white py-2 px-4 rounded-md hover:bg-lime-600 transition cursor-pointer">
                 </div>
             </form>
+            <script>
+                function resetForm(event) {
+                    event.preventDefault(); // Evita el envío inmediato del formulario
+                    let form = document.getElementById("miFormulario");
+
+                    // Simular envío del formulario y limpiar los campos después
+                    fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form)
+                    }).then(response => {
+                        if (response.ok) {
+                            form.reset(); // Limpia el formulario si el envío fue exitoso
+                        } else {
+                            alert("Hubo un error al enviar el correo");
+                        }
+                    }).catch(error => {
+                        alert("Error en la solicitud: " + error);
+                    });
+                }
+            </script>
         </div>
-    </div>
+        </div>
     </div>
 </header>
                                                 

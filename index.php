@@ -67,7 +67,7 @@ $conn->close();
             </nav>
         </div>
     </header>
-        <div class="overlay p-10 rounded-lg shadow-xl max-w-md text-center mt-20 sm:mt-16 md:mt-32">
+        <div class="overlay w-full sm:w-96 p-10 rounded-lg shadow-xl text-center relative min-h-[40vh] mt-7 sm:mt-16 md:mt-8">
             <h2 class="text-3xl font-bold mb-6 text-gray-700">¡Bienvenido a TF!</h2>
             <p class="mb-8 text-gray-600">Por favor ingresa tu usuario y contraseña para continuar.</p>
 
