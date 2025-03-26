@@ -71,7 +71,6 @@ $conn->close();
             <h2 class="text-3xl font-bold mb-6 text-gray-700">¡Bienvenido a TF!</h2>
             <p class="mb-8 text-gray-600">Por favor ingresa tu usuario y contraseña para continuar.</p>
 
-            <!-- Mostrar errores si existen -->
             <?php if (isset($error)) { ?>
                 <div class="text-red-600 mb-4"><?php echo $error; ?></div>
             <?php } ?>

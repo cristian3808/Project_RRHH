@@ -37,7 +37,6 @@ $conn->close();
         <h1 class="text-left font-bold text-lg md:text-xl mt-[10px] mb-5">Datos de la persona.</h1>
 
         <div class="grid gap-4 grid-cols-1 md:grid-cols-4">
-            
             <div class="flex flex-col">
                 <label class="custom-font text-xs mb-1">1. Nombres</label>
                 <input id="nombres" name="nombres" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs " maxlength="30" required>
@@ -69,7 +68,7 @@ $conn->close();
                 <input name="fecha_nacimiento" type="date" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label for="lugar_nacimiento" class="custom-font text-xs mb-1">7. Lugar de nacimiento</label>
+                <label for="lugar_nacimiento" class="custom-font text-xs mb-1">6. Lugar de nacimiento</label>
                 <select id="lugar_nacimiento" name="lugar_nacimiento"
                     class="border border-gray-300 rounded py-1 px-2 text-xs appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                     aria-placeholder="ola" required>
@@ -77,11 +76,11 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">8. Fecha de expedición de la cédula</label>
+                <label class="custom-font text-xs mb-1">7. Fecha de expedición de la cédula</label>
                 <input name="fecha_expedicion_cedula" type="date" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-4">9. Género</label>
+                <label class="custom-font text-sm mb-4">8. Género</label>
                 <select id="genero" name="genero" class="border border-gray-300 rounded py-1 px-2 text-sm -mt-[15px]" required>
                     <option value="">Selecciona tu género</option>
                     <option value="masculino">Masculino</option>
@@ -89,19 +88,19 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">10. Teléfono</label>
+                <label class="custom-font text-xs mb-1">9. Teléfono</label>
                 <input name="telefono" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">11. Correo</label>
+                <label class="custom-font text-xs mb-1">10. Correo</label>
                 <input name="correo" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">12. Dirección</label>
+                <label class="custom-font text-xs mb-1">11. Dirección</label>
                 <input type="text" id="direccion" name="direccion" class="border border-gray-300 rounded py-1 px-2 text-xs" placeholder="Selecciona..." readonly onclick="abrirModalDireccion()" required>
             </div>
             <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">13. Ciudad de residencia</label>
+                <label class="custom-font text-xs mb-1">12. Ciudad de residencia</label>
                 <select id="municipio_residencia" name="municipio_residencia"
                     class="border border-gray-300 rounded py-1 px-2 text-xs appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                     aria-placeholder="ola" required>
@@ -109,7 +108,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs">14. EPS</label>
+                <label class="custom-font text-xs">13. EPS</label>
                 <select name="eps" class="border border-gray-300 rounded py-1 px-2 text-xs uppercase" required>
                     <option value="" disabled selected>Selecciona una EPS</option>
                     <option value="NUEVA EPS">NUEVA EPS</option>
@@ -135,7 +134,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs -mt-[-1px]">15. AFP FONDO DE PENSIONES</label>
+                <label class="custom-font text-xs -mt-[-1px]">14. AFP FONDO DE PENSIONES</label>
                 <select name="fondo_pension" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value=""disable selected>Selecciona tu AFP</option>
                     <option value="Porvenir">Porvenir</option>
@@ -151,57 +150,64 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs ">16. ARL</label>
+                <label class="custom-font text-xs ">15. ARL</label>
                 <input name="arl" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs bg-zinc-200" value="AXA COLPATRIA" readonly required>
             </div>
             <div class="flex flex-col ">
-                <label class="custom-font text-xs mb-1">17. Contacto en caso de emergencia</label>
+                <label class="custom-font text-xs mb-1">16. Contacto en caso de emergencia</label>
                 <input name="nombre_contacto" type="text" placeholder="Nombre" class="border border-gray-300 rounded py-1 px-2 text-xs mb-2" required>
                 <input name="telefono_contacto" type="text" placeholder="Teléfono" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
         </div>
-        <h1 class="text-left font-bold text-lg md:text-xl mt-[10px] mb-5">
-            Por favor subir los Documentos en <span class="text-red-600">(PDF)</span>.
+        <h1 class="text-left font-bold text-lg md:text-xl mt-[10px] mb-5 flex justify-between items-center">
+            <span>
+                Por favor subir los Documentos en <span class="text-red-600">(PDF)</span>.
+            </span>
+            <!-- Botón para abrir el modal -->
+            <button id="btnAbrirModal" class="bg-[#EAE9E5] text-black px-4 py-2 border-2 border-black rounded flex items-center space-x-2">
+                <img src="/admin/includes/imgs/guia_tallas.png" alt="" class="w-6 h-6">
+                <span>Ver Guia De Tallas</span>
+            </button>
         </h1>
         <div class=" grid gap-4 grid-cols-1 md:grid-cols-4"> 
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">18. Hoja de vida actual.<br>(Máximo 3 Hojas)</label>
+                <label class="custom-font text-xs mb-1">17. Hoja de vida actual.<br>(Máximo 3 Hojas)</label>
                 <input name="hoja_vida" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">19. Cédula.<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">18. Cédula.<br>(Máximo 1 Hoja)</label>
                 <input name="subir_cedula" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-5">20. Certificados de estudio </label>
+                <label class="custom-font text-xs mb-5">19. Certificados de estudio </label>
                 <input name="certificados_estudio" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-5">21. Certificados laborales</label>
+                <label class="custom-font text-xs mb-5">20. Certificados laborales</label>
                 <input name="certificados_laborales" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">22. Foto fondo blanco (3x4)<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">21. Foto fondo blanco (3x4)<br>(Máximo 1 Hoja)</label>
                 <input name="foto" type="file" accept="image/jpg, image/jpeg, image/png" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">23. Certificado EPS<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">22. Certificado EPS<br>(Máximo 1 Hoja)</label>
                 <input name="certificados_eps" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">24. Carnet vacunas<br>(Máximo 5 Hojas)</label>
+                <label class="custom-font text-xs mb-1">23. Carnet vacunas<br>(Máximo 5 Hojas)</label>
                 <input name="carnet_vacunas" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">25. Certificacion bancaria<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">24. Certificacion bancaria<br>(Máximo 1 Hoja)</label>
                 <input name="certificacion_bancaria" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">26. Certificado antecedentes<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">25. Certificado antecedentes<br>(Máximo 1 Hoja)</label>
                 <input name="certificado_antecedentes" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">27. Certificado AFP<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">26. Certificado AFP<br>(Máximo 1 Hoja)</label>
                 <input name="certificado_afp" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
@@ -220,10 +226,10 @@ $conn->close();
                 <input id="codigo_departamento" name="codigo_departamento" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs " readonly>
             </div> -->
         </div>
-        <div  class=" grid gap-4 grid-cols-1 md:grid-cols-4 mt-[20px]">
+        <div  class="grid gap-4 grid-cols-1 md:grid-cols-4 mt-[20px]">
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">26. Talla de Camisa</label>
-                <select id="talla_camisa" name="talla_camisa" class="border border-gray-300 rounded py-2 px-3 text-sm" >
+                <label class="custom-font text-sm mb-2">27. Talla de Camisa</label>
+                <select id="talla_camisa" name="talla_camisa" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
@@ -234,8 +240,8 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">27. Talla de Pantalón</label>
-                <select id="talla_pantalon" name="talla_pantalon" class="border border-gray-300 rounded py-2 px-3 text-sm" >
+                <label class="custom-font text-sm mb-2">28. Talla de Pantalón</label>
+                <select id="talla_pantalon" name="talla_pantalon" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="28">28</option>
                     <option value="30">30</option>
@@ -249,8 +255,8 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">28. Talla de Botas</label>
-                <select id="talla_botas" name="talla_botas" class="border border-gray-300 rounded py-2 px-3 text-sm" >
+                <label class="custom-font text-sm mb-2">29. Talla de Botas</label>
+                <select id="talla_botas" name="talla_botas" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="35">35</option>
                     <option value="36">36</option>
@@ -267,8 +273,8 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">29. Talla de Nomex</label>
-                <select id="talla_nomex" name="talla_nomex" class="border border-gray-300 rounded py-2 px-3 text-sm" >
+                <label class="custom-font text-sm mb-2">30. Talla de Nomex</label>
+                <select id="talla_nomex" name="talla_nomex" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="34">34</option>
                     <option value="36">36</option>
@@ -283,19 +289,104 @@ $conn->close();
                 </select>
             </div>
         </div>
-        
-        <div class="mt-4 flex justify-center">
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-4">
+            <!-- Estado Civil -->
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">31. Estado Civil</label>
+                <select id="estado_civil" name="estado_civil" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+                    <option value="" disabled selected>Selecciona</option>
+                    <option value="soltero">Soltero</option>
+                    <option value="casado">Casado</option>
+                    <option value="union_libre">Unión Libre</option>
+                </select>
+            </div>
+
+            <!-- Nombre Pareja -->
+            <div class="flex flex-col" id="nombre_pareja_container" style="display: none;">
+                <label class="custom-font text-xs mb-1">Nombre de la Pareja</label>
+                <input id="nombre_pareja" name="nombre_pareja" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs">
+            </div>
+
+            <!-- Tiene Hijos -->
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">32. ¿Tiene Hijos?</label>
+                <select id="tiene_hijos" name="tiene_hijos" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+                    <option value="" disabled selected>Selecciona</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Cuántos Hijos -->
+            <div class="flex flex-col" id="cuantos_hijos_container" style="display: none;">
+                <label class="custom-font text-xs mb-1">¿Cuántos hijos?</label>
+                <input id="cuantos_hijos" name="cuantos_hijos" type="number" min="1" class="border border-gray-300 rounded py-1 px-2 text-xs">
+            </div>
+        </div>
+
+        <!-- Sección para hijos -->
+        <div id="datos_hijos"></div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mostrar u ocultar el campo "Nombre de la Pareja" basado en el estado civil
+            document.getElementById("estado_civil").addEventListener("change", function () {
+                let estadoCivil = this.value;
+                document.getElementById("nombre_pareja_container").style.display = (estadoCivil === "casado" || estadoCivil === "union_libre") ? "block" : "none";
+            });
+
+            // Mostrar el campo "Cuántos hijos" si el usuario selecciona "Sí"
+            document.getElementById("tiene_hijos").addEventListener("change", function () {
+                let tieneHijos = this.value;
+                let cuantosHijosContainer = document.getElementById("cuantos_hijos_container");
+                let datosHijos = document.getElementById("datos_hijos");
+
+                if (tieneHijos === "si") {
+                    cuantosHijosContainer.style.display = "block";
+                } else {
+                    cuantosHijosContainer.style.display = "none";
+                    datosHijos.innerHTML = ""; // Limpiar campos de hijos si cambia a "No"
+                }
+            });
+
+            // Generar los campos para los hijos cuando se introduce una cantidad
+            document.getElementById("cuantos_hijos").addEventListener("change", function () {
+                let cantidad = parseInt(this.value) || 0;
+                let contenedor = document.getElementById("datos_hijos");
+                contenedor.innerHTML = ""; // Limpiar antes de agregar nuevos
+
+                if (cantidad > 0) {
+                    contenedor.style.display = "block";
+                    for (let i = 1; i <= cantidad; i++) {
+                        let hijoDiv = document.createElement("div");
+                        hijoDiv.classList.add("grid", "gap-4", "grid-cols-1", "md:grid-cols-5", "mt-4");
+
+                        hijoDiv.innerHTML = `
+                            <div class='flex flex-col'>
+                                <label class='custom-font text-xs mb-1'>Nombre Completo Hijo ${i}</label>
+                                <input type='text' name='nombre_completo_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                            </div>
+                            <div class='flex flex-col'>
+                                <label class='custom-font text-xs mb-1'>Tipo Documento Hijo ${i}</label>
+                                <input type='text' name='tipo_documento_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                            </div>
+                        `;
+                        contenedor.appendChild(hijoDiv);
+                    }
+                } else {
+                    contenedor.style.display = "none";
+                }
+            });
+        });
+        </script>
+
+            <div class="mt-4 flex justify-center">
             <button type="submit" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition transform hover:scale-105">
                 Enviar
             </button>
         </div>
     </div>
 </form>
-<!-- Botón para abrir el modal -->
-<button id="btnAbrirModal" class="bg-[#EAE9E5] text-black px-4 py-2 border-2 border-black rounded flex items-center space-x-2 relative top-[260px] left-[-270px]">
-    <img src="/admin/includes/imgs/guia_tallas.png" alt="" class="w-6 h-6"> <!-- Tamaño de la imagen ajustado -->
-    <span>Ver Guia De Tallas</span> <!-- El texto -->
-</button>
 
 <!-- Modal con imágenes -->
 <div id="modalImagenes" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
@@ -323,8 +414,6 @@ $conn->close();
         document.getElementById('modalImagenes').classList.add('hidden');
     });
 </script>
-
-
 <script>
     document.getElementById("genero").addEventListener("change", function() {
         var genero = this.value;
@@ -410,7 +499,6 @@ $conn->close();
         }
     });
 </script>
-
 <!-- Modal de respuesta -->
 <div id="modal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center hidden">
     <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-full">
@@ -632,7 +720,7 @@ $conn->close();
         </div>
     </div>
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $('#formUsuario').on('submit', function(e) {
         e.preventDefault(); // Evita el envío normal del formulario
         var formData = new FormData(this);
@@ -755,18 +843,18 @@ function getInputValue(id) {
     // Mostrar las direcciones en los campos correspondientes
     document.getElementById('detallesDireccionLimpio').textContent = direccionLimpia || "";
     document.getElementById('detallesDireccion').textContent = direccion || "";
-}
-
-function guardarDireccion(event) {
-    event.preventDefault();  // Evita la recarga de la página
-
-    const direccionLimpia = document.getElementById('detallesDireccionLimpio').textContent.trim();
-    const direccion = document.getElementById('detallesDireccion').textContent.trim();
-
-    if (!direccionLimpia) {
-        alert('Por favor, complete los detalles de la dirección.');
-        return;
     }
+
+    function guardarDireccion(event) {
+        event.preventDefault();  // Evita la recarga de la página
+
+        const direccionLimpia = document.getElementById('detallesDireccionLimpio').textContent.trim();
+        const direccion = document.getElementById('detallesDireccion').textContent.trim();
+
+        if (!direccionLimpia) {
+            alert('Por favor, complete los detalles de la dirección.');
+            return;
+        }
 
     // Asignar valores a los campos 
     document.getElementById('direccion').value = direccion;

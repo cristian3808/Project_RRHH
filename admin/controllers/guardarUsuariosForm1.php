@@ -29,6 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $talla_botas = $_POST['talla_botas'];
     $talla_nomex = $_POST['talla_nomex'];
     $enviado = 0;
+    $estado_civil = $_POST['estado_civil'];
+    $nombre_pareja = $_POST['nombre_pareja'];
+    $tiene_hijos = $_POST['tiene_hijos'];
+    $cuantos_hijos = $_POST['cuantos_hijos'];
+
+    $nombre_completo_hijo = $_POST['nombre_completo_hijo'];
+    $tipo_documento_hijo = $_POST['tipo_documento_hijo'];
+    $numero_documento_hijo = $_POST['numero_documento_hijo'];
+    $parentesco_hijo = $_POST['parentesco_hijo'];
+    $edad_hijo = $_POST['edad_hijo'];
 
     $sql_check = "SELECT COUNT(*) FROM usuarios_r WHERE cedula = ?";
     $stmt_check = $conn->prepare($sql_check);
@@ -277,28 +287,55 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $uploadFileCedula = '';  
         }
 
-        $stmt = $conn->prepare("INSERT INTO usuarios_r (nombres, apellidos,genero, cedula, telefono, fecha_nacimiento, lugar_nacimiento, direccion,
-                                fecha_expedicion_cedula, correo, municipio_residencia, nombre_contacto, telefono_contacto, tipo_sangre, eps, fondo_pension, arl, hoja_vida, subir_cedula, certificados_estudio, 
-                                certificados_laborales, foto, certificados_eps,carnet_vacunas,certificacion_bancaria,certificado_antecedentes,certificado_afp,certificados_territorialidad,talla_camisa, 
-                                talla_pantalon,talla_botas,talla_nomex, enviado) 
-                                VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        // Insertar en la tabla usuarios_r
+        $stmt_usuarios = $conn->prepare("INSERT INTO usuarios_r (
+            nombres, apellidos, genero, cedula, telefono, fecha_nacimiento, lugar_nacimiento, direccion,
+            fecha_expedicion_cedula, correo, municipio_residencia, nombre_contacto, telefono_contacto, tipo_sangre, eps, 
+            fondo_pension, arl, hoja_vida, subir_cedula, certificados_estudio, certificados_laborales, foto, certificados_eps, 
+            carnet_vacunas, certificacion_bancaria, certificado_antecedentes, certificado_afp, certificados_territorialidad, 
+            talla_camisa, talla_pantalon, talla_botas, talla_nomex, enviado, estado_civil, nombre_pareja, tiene_hijos, cuantos_hijos) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        // Vincular parámetros a la sentencia SQL
-        $stmt->bind_param(
-            "ssssssssssssssssssssssssssssssssi",
-            $nombres,$apellidos,$genero,$cedula,$telefono,$fechaNacimiento,$lugar_nacimiento,$direccion,
-            $fecha_expedicion_cedula,$correo,$municipio_residencia,$nombre_1,$telefono_1,$tipo_sangre,$eps,$fondo_pension,$arl,$uploadFile,
-            $uploadFileCedula,$uploadFileEstudios,$uploadFileLaborales,$uploadFileImagen,$uploadFileEps,$uploadFileVacunas,
-            $uploadFileBancaria,$uploadFileAntecedentes,$uploadFileAfp,$uploadFileTerritoriales,$talla_camisa,$talla_pantalon,
-            $talla_botas,$talla_nomex,$enviado
+        if (!$stmt_usuarios) {
+            die("Error en la preparación de la consulta de usuarios: " . $conn->error);
+        }
+
+        $stmt_usuarios->bind_param(
+            "sssssssssssssssssssssssssssssssissssi",
+            $nombres, $apellidos, $genero, $cedula, $telefono, $fechaNacimiento, $lugar_nacimiento, $direccion,
+            $fecha_expedicion_cedula, $correo, $municipio_residencia, $nombre_contacto, $telefono_contacto, $tipo_sangre, $eps, 
+            $fondo_pension, $arl, $uploadFile, $uploadFileCedula, $uploadFileEstudios, $uploadFileLaborales, $uploadFileImagen, 
+            $uploadFileEps, $uploadFileVacunas, $uploadFileBancaria, $uploadFileAntecedentes, $uploadFileAfp, $uploadFileTerritoriales, 
+            $talla_camisa, $talla_pantalon, $talla_botas, $talla_nomex, $enviado, $estado_civil, $nombre_pareja, $tiene_hijos, $cuantos_hijos
         );
-        
-        if ($stmt->execute()) {
-            echo "Datos registrados exitosamente...";
+
+        // Ejecutar inserción en `usuarios_r`
+        if ($stmt_usuarios->execute()) {
+            // Obtener el ID del usuario recién insertado
+            $usuario_id = $stmt_usuarios->insert_id;
+            
+            // Insertar en la tabla hijos
+            $stmt_hijos = $conn->prepare("INSERT INTO hijos (usuario_id,nombre_completo_hijo,tipo_documento_hijo) 
+            VALUES (?, ?, ?)");
+            if (!$stmt_hijos) {
+                die("Error en la preparación de la consulta de hijos: " . $conn->error);
+            }
+            
+            $stmt_hijos->bind_param("iss", $usuario_id, $nombre_completo_hijo, $tipo_documento_hijo);
+            
+            // Recorrer los nombres de los hijos y guardarlos
+            for ($i = 1; $i <= intval($_POST["cuantos_hijos"]); $i++) {
+                if (isset($_POST["nombre_completo_hijo_$i"],$_POST["tipo_documento_hijo_$i"])) {
+                    $nombre_completo_hijo = $_POST["nombre_completo_hijo_$i"];
+                    $tipo_documento_hijo = $_POST["tipo_documento_hijo_$i"];
+                    $stmt_hijos->execute();
+                }
+            }
+            
+            echo "Usuario y sus hijos registrados correctamente.";
         } else {
-            echo "Error: " . $stmt->error;
-        }       
-        $stmt->close();
+            echo "Error al insertar usuario: " . $stmt_usuarios->error;
+        }
     }
 }
 $conn->close();
