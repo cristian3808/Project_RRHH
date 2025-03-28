@@ -289,7 +289,7 @@ $conn->close();
                 </select>
             </div>
         </div>
-        <div class="grid gap-4 grid-cols-1 md:grid-cols-4">
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-4 mt-4">
             <!-- Estado Civil -->
             <div class="flex flex-col">
                 <label class="custom-font text-xs mb-1">31. Estado Civil</label>
@@ -304,7 +304,7 @@ $conn->close();
             <!-- Nombre Pareja -->
             <div class="flex flex-col" id="nombre_pareja_container" style="display: none;">
                 <label class="custom-font text-xs mb-1">Nombre de la Pareja</label>
-                <input id="nombre_pareja" name="nombre_pareja" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs">
+                <input id="nombre_pareja" name="nombre_pareja" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs w-[210px]">
             </div>
 
             <!-- Tiene Hijos -->
@@ -317,68 +317,88 @@ $conn->close();
                 </select>
             </div>
 
-            <!-- Cuántos Hijos -->
-            <div class="flex flex-col" id="cuantos_hijos_container" style="display: none;">
-                <label class="custom-font text-xs mb-1">¿Cuántos hijos?</label>
-                <input id="cuantos_hijos" name="cuantos_hijos" type="number" min="1" class="border border-gray-300 rounded py-1 px-2 text-xs">
-            </div>
-        </div>
+           <!-- Cuántos Hijos -->
+<div class="flex flex-col" id="cuantos_hijos_container" style="display: none;">
+    <label class="custom-font text-xs mb-1">¿Cuántos hijos?</label>
+    <input id="cuantos_hijos" name="cuantos_hijos" type="number" min="1"
+        class="border border-gray-300 rounded py-1 px-2 text-xs w-[210px]">
+</div>
+</div>
 
-        <!-- Sección para hijos -->
-        <div id="datos_hijos"></div>
+<!-- Sección para hijos -->
+<div id="datos_hijos"></div>
 
-        <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Mostrar u ocultar el campo "Nombre de la Pareja" basado en el estado civil
-            document.getElementById("estado_civil").addEventListener("change", function () {
-                let estadoCivil = this.value;
-                document.getElementById("nombre_pareja_container").style.display = (estadoCivil === "casado" || estadoCivil === "union_libre") ? "block" : "none";
-            });
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Mostrar u ocultar el campo "Nombre de la Pareja" basado en el estado civil
+    document.getElementById("estado_civil").addEventListener("change", function () {
+        let estadoCivil = this.value;
+        document.getElementById("nombre_pareja_container").style.display = (estadoCivil === "casado" || estadoCivil === "union_libre") ? "block" : "none";
+    });
 
-            // Mostrar el campo "Cuántos hijos" si el usuario selecciona "Sí"
-            document.getElementById("tiene_hijos").addEventListener("change", function () {
-                let tieneHijos = this.value;
-                let cuantosHijosContainer = document.getElementById("cuantos_hijos_container");
-                let datosHijos = document.getElementById("datos_hijos");
+    // Mostrar el campo "Cuántos hijos" si el usuario selecciona "Sí"
+    document.getElementById("tiene_hijos").addEventListener("change", function () {
+        let tieneHijos = this.value;
+        let cuantosHijosContainer = document.getElementById("cuantos_hijos_container");
+        let datosHijos = document.getElementById("datos_hijos");
 
-                if (tieneHijos === "si") {
-                    cuantosHijosContainer.style.display = "block";
-                } else {
-                    cuantosHijosContainer.style.display = "none";
-                    datosHijos.innerHTML = ""; // Limpiar campos de hijos si cambia a "No"
-                }
-            });
+        if (tieneHijos === "si") {
+            cuantosHijosContainer.style.display = "block";
+        } else {
+            cuantosHijosContainer.style.display = "none";
+            datosHijos.innerHTML = ""; // Limpiar campos de hijos si cambia a "No"
+        }
+    });
 
-            // Generar los campos para los hijos cuando se introduce una cantidad
-            document.getElementById("cuantos_hijos").addEventListener("change", function () {
-                let cantidad = parseInt(this.value) || 0;
-                let contenedor = document.getElementById("datos_hijos");
-                contenedor.innerHTML = ""; // Limpiar antes de agregar nuevos
+    // Generar los campos para los hijos en tiempo real mientras el usuario escribe
+    document.getElementById("cuantos_hijos").addEventListener("input", function () {
+        let cantidad = parseInt(this.value) || 0;
+        let contenedor = document.getElementById("datos_hijos");
+        contenedor.innerHTML = ""; // Limpiar antes de agregar nuevos
 
-                if (cantidad > 0) {
-                    contenedor.style.display = "block";
-                    for (let i = 1; i <= cantidad; i++) {
-                        let hijoDiv = document.createElement("div");
-                        hijoDiv.classList.add("grid", "gap-4", "grid-cols-1", "md:grid-cols-5", "mt-4");
+        if (cantidad > 0) {
+            contenedor.style.display = "block";
+            for (let i = 1; i <= cantidad; i++) {
+                let hijoDiv = document.createElement("div");
+                hijoDiv.classList.add("grid", "gap-4", "grid-cols-1", "md:grid-cols-5", "mt-4");
 
-                        hijoDiv.innerHTML = `
-                            <div class='flex flex-col'>
-                                <label class='custom-font text-xs mb-1'>Nombre Completo Hijo ${i}</label>
-                                <input type='text' name='nombre_completo_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
-                            </div>
-                            <div class='flex flex-col'>
-                                <label class='custom-font text-xs mb-1'>Tipo Documento Hijo ${i}</label>
-                                <input type='text' name='tipo_documento_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
-                            </div>
-                        `;
-                        contenedor.appendChild(hijoDiv);
-                    }
-                } else {
-                    contenedor.style.display = "none";
-                }
-            });
-        });
-        </script>
+                hijoDiv.innerHTML = `
+                    <div class='flex flex-col'>
+                        <label class='custom-font text-xs mb-1'>Nombre Completo Hijo ${i}</label>
+                        <input type='text' name='nombre_completo_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                    </div>
+                    <div class='flex flex-col'>
+                        <label class='custom-font text-xs mb-1'>Tipo Documento Hijo ${i}</label>
+                        <select name='tipo_documento_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                            <option value='' disabled selected>Selecciona</option>
+                            <option value='DNI'>DNI</option>
+                            <option value='Pasaporte'>Pasaporte</option>
+                            <option value='Tarjeta de Identidad'>Tarjeta de Identidad</option>
+                            <option value='Otro'>Otro</option>
+                        </select>
+                    </div>
+                    <div class='flex flex-col'>
+                        <label class='custom-font text-xs mb-1'>Número Documento Hijo ${i}</label>
+                        <input type='text' name='numero_documento_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                    </div>
+                    <div class='flex flex-col'>
+                        <label class='custom-font text-xs mb-1'>Parentesco Hijo ${i}</label>
+                        <input type='text' name='parentesco_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                    </div>
+                     <div class='flex flex-col'>
+                        <label class='custom-font text-xs mb-1'>Edad Hijo ${i}</label>
+                        <input type='text' name='edad_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                    </div>
+                `;
+                contenedor.appendChild(hijoDiv);
+            }
+        } else {
+            contenedor.style.display = "none";
+        }
+    });
+});
+</script>
+
 
             <div class="mt-4 flex justify-center">
             <button type="submit" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition transform hover:scale-105">

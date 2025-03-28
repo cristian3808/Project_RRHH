@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (isset($_SESSION['email_sent']) && $_SESSION['email_sent'] === true) {
+    die('El correo ya fue enviado.');
+}
+$_SESSION['email_sent'] = true;
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -62,7 +68,7 @@ function enviarCorreoConLink($correo, $link, $asunto) {
 
 // Obtener los correos seleccionados desde el formulario
 if (isset($_POST['usuarios']) && is_array($_POST['usuarios'])) {
-    $correosSeleccionados = $_POST['usuarios'];
+    $correosSeleccionados = array_unique($_POST['usuarios']);
 } else {
     die('No se seleccionaron usuarios.');
 }

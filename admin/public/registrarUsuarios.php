@@ -105,6 +105,7 @@ if (mysqli_num_rows($result) > 0) {
             <a href="/admin/años.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">AÑOS</a>
             <a href="/admin/index.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">PROYECTOS</a>
             <a href="/admin/public/rtaPrimerForm.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">RTA DATOS PERSONALES</a>
+            <a href="/admin/public/consultar.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">CONSULTAR</a>
             <a href="#" onclick="mostrarFormularioUsuarios();" class="text-green-900 hover:text-lime-600 font-bold py-2 px-4 rounded-md border-2 border-green-900 hover:bg-green-900 hover:text-white transition">
                 ENV FORM DATOS PERSONALES
             </a>
@@ -166,23 +167,32 @@ if (mysqli_num_rows($result) > 0) {
             </form>
             <script>
                 function resetForm(event) {
-                    event.preventDefault(); // Evita el envío inmediato del formulario
-                    let form = document.getElementById("miFormulario");
+                event.preventDefault(); 
+                let form = document.getElementById("miFormulario");
+                let submitButton = form.querySelector("input[type='submit']");
+                
+                if (submitButton.disabled) return; // Evita doble clic
 
-                    // Simular envío del formulario y limpiar los campos después
-                    fetch(form.action, {
-                        method: form.method,
-                        body: new FormData(form)
-                    }).then(response => {
-                        if (response.ok) {
-                            form.reset(); // Limpia el formulario si el envío fue exitoso
-                        } else {
-                            alert("Hubo un error al enviar el correo");
-                        }
-                    }).catch(error => {
-                        alert("Error en la solicitud: " + error);
-                    });
-                }
+                submitButton.disabled = true; // Deshabilita el botón temporalmente
+
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form)
+                }).then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    if (data.includes("success")) {
+                        alert("Correo enviado correctamente");
+                        form.reset();
+                    } else {
+                        alert("Hubo un error al enviar el correo");
+                    }
+                }).catch(error => {
+                    alert("Error en la solicitud: " + error);
+                }).finally(() => {
+                    submitButton.disabled = false; // Habilita el botón nuevamente
+                });
+            }
             </script>
         </div>
         </div>

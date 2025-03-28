@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fecha_expedicion_cedula = $_POST['fecha_expedicion_cedula'];
     $correo = $_POST['correo'];
     $municipio_residencia = $_POST['municipio_residencia'];
-    $nombre_1 = $_POST['nombre_contacto'];
-    $telefono_1 = $_POST['telefono_contacto'];
+    $nombre_contacto = $_POST['nombre_contacto'];
+    $telefono_contacto = $_POST['telefono_contacto'];
     $tipo_sangre = $_POST['tipo_sangre'];
     $certificadosEps = $_POST['certificados_eps'];
     $carnetVacunas = $_POST['carnet_vacunas'];
@@ -315,19 +315,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $usuario_id = $stmt_usuarios->insert_id;
             
             // Insertar en la tabla hijos
-            $stmt_hijos = $conn->prepare("INSERT INTO hijos (usuario_id,nombre_completo_hijo,tipo_documento_hijo) 
-            VALUES (?, ?, ?)");
+            $stmt_hijos = $conn->prepare("INSERT INTO hijos (usuario_id,nombre_completo_hijo,tipo_documento_hijo,numero_documento_hijo,parentesco_hijo,edad_hijo) 
+            VALUES (?, ?, ?, ?, ?, ?)");
             if (!$stmt_hijos) {
                 die("Error en la preparación de la consulta de hijos: " . $conn->error);
             }
             
-            $stmt_hijos->bind_param("iss", $usuario_id, $nombre_completo_hijo, $tipo_documento_hijo);
+            $stmt_hijos->bind_param("isssss", $usuario_id, $nombre_completo_hijo, $tipo_documento_hijo, $numero_documento_hijo, $parentesco_hijo, $edad_hijo);
             
             // Recorrer los nombres de los hijos y guardarlos
             for ($i = 1; $i <= intval($_POST["cuantos_hijos"]); $i++) {
                 if (isset($_POST["nombre_completo_hijo_$i"],$_POST["tipo_documento_hijo_$i"])) {
                     $nombre_completo_hijo = $_POST["nombre_completo_hijo_$i"];
                     $tipo_documento_hijo = $_POST["tipo_documento_hijo_$i"];
+                    $numero_documento_hijo = $_POST["numero_documento_hijo_$i"];
+                    $parentesco_hijo = $_POST["parentesco_hijo_$i"];
+                    $edad_hijo = $_POST["edad_hijo_$i"];
                     $stmt_hijos->execute();
                 }
             }
