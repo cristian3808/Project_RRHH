@@ -381,6 +381,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label class='custom-font text-xs mb-1'>Número Documento Hijo ${i}</label>
                         <input type='text' name='numero_documento_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
                     </div>
+                    <div class='flex flex-col'>
+                        <label class='custom-font text-xs mb-1'>Parentesco Hijo ${i}</label>
+                        <input type='text' name='parentesco_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
+                    </div>
                      <div class='flex flex-col'>
                         <label class='custom-font text-xs mb-1'>Edad Hijo ${i}</label>
                         <input type='text' name='edad_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
