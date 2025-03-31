@@ -142,6 +142,7 @@ if (isset($error_message)) {
             <a href="/admin/años.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">AÑOS</a>
             <a href="/admin/index.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">PROYECTOS</a>
             <a href="/admin/public/registrarUsuarios.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">USUARIOS</a>
+            <a href="/admin/public/consultar.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">CONSULTAR</a>
         </nav>
 
         <!-- Botón de cierre de sesión -->
@@ -159,6 +160,7 @@ if (isset($error_message)) {
         <a href="../../../logout.php" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-3 px-4 md:px-6 rounded-lg shadow-md text-xs md:text-sm flex items-center">
         <img src="/admin/includes/imgs/cerrarsesion.png" class="w-4 h-4 mr-2" alt="Cerrar Sesión" />
         Cesrrar sesión</a>
+        <a href="/admin/public/consultar.php?anio_id=<?php echo $anio_id; ?>" class="block text-green-900 hover:text-lime-600 font-bold text-lg">CONSULTAR</a>
     </div>
 </header>
 <!-- Formulario de usuarios oculto -->

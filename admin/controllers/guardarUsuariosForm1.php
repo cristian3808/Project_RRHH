@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre_completo_hijo = $_POST['nombre_completo_hijo'];
     $tipo_documento_hijo = $_POST['tipo_documento_hijo'];
     $numero_documento_hijo = $_POST['numero_documento_hijo'];
-    $parentesco_hijo = $_POST['parentesco_hijo'];
     $edad_hijo = $_POST['edad_hijo'];
 
     $sql_check = "SELECT COUNT(*) FROM usuarios_r WHERE cedula = ?";
@@ -315,13 +314,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $usuario_id = $stmt_usuarios->insert_id;
             
             // Insertar en la tabla hijos
-            $stmt_hijos = $conn->prepare("INSERT INTO hijos (usuario_id,nombre_completo_hijo,tipo_documento_hijo,numero_documento_hijo,parentesco_hijo,edad_hijo) 
-            VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt_hijos = $conn->prepare("INSERT INTO hijos (usuario_id,nombre_completo_hijo,tipo_documento_hijo,numero_documento_hijo,edad_hijo) 
+            VALUES (?, ?, ?, ?, ?)");
             if (!$stmt_hijos) {
                 die("Error en la preparación de la consulta de hijos: " . $conn->error);
             }
             
-            $stmt_hijos->bind_param("isssss", $usuario_id, $nombre_completo_hijo, $tipo_documento_hijo, $numero_documento_hijo, $parentesco_hijo, $edad_hijo);
+            $stmt_hijos->bind_param("issss", $usuario_id, $nombre_completo_hijo, $tipo_documento_hijo, $numero_documento_hijo, $edad_hijo);
             
             // Recorrer los nombres de los hijos y guardarlos
             for ($i = 1; $i <= intval($_POST["cuantos_hijos"]); $i++) {
@@ -329,13 +328,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $nombre_completo_hijo = $_POST["nombre_completo_hijo_$i"];
                     $tipo_documento_hijo = $_POST["tipo_documento_hijo_$i"];
                     $numero_documento_hijo = $_POST["numero_documento_hijo_$i"];
-                    $parentesco_hijo = $_POST["parentesco_hijo_$i"];
                     $edad_hijo = $_POST["edad_hijo_$i"];
                     $stmt_hijos->execute();
                 }
             }
             
-            echo "Usuario y sus hijos registrados correctamente.";
+            echo "Usuario registrado correctamente.";
         } else {
             echo "Error al insertar usuario: " . $stmt_usuarios->error;
         }
