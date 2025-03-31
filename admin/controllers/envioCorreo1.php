@@ -1,10 +1,4 @@
 <?php
-session_start();
-if (isset($_SESSION['email_sent']) && $_SESSION['email_sent'] === true) {
-    die('El correo ya fue enviado.');
-}
-$_SESSION['email_sent'] = true;
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -18,6 +12,7 @@ function enviarCorreoConLink($correo, $link, $asunto) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
+
     $mail->Username = 'pruebasoftwarerc@gmail.com';
     $mail->Password = 'abkgbjoekgsvhtnj';
     $mail->SMTPSecure = 'tls';
@@ -29,7 +24,6 @@ function enviarCorreoConLink($correo, $link, $asunto) {
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';
     $mail->Subject = $asunto; // Asunto personalizado
-
     // Cuerpo del correo con el mensaje completo (incluyendo la imagen)
     $mail->Body = "<p>Buen día</p>
     <p>Estimado (a) Aspirante,</p>
@@ -68,7 +62,7 @@ function enviarCorreoConLink($correo, $link, $asunto) {
 
 // Obtener los correos seleccionados desde el formulario
 if (isset($_POST['usuarios']) && is_array($_POST['usuarios'])) {
-    $correosSeleccionados = array_unique($_POST['usuarios']);
+    $correosSeleccionados = $_POST['usuarios'];
 } else {
     die('No se seleccionaron usuarios.');
 }
@@ -81,7 +75,6 @@ $link = 'http://localhost:3000/admin/public/formularios/form1.php';
 
 // Variable para almacenar el resultado
 $mensajeEnviado = false;
-$resultado = '';
 $errores = [];
 
 // Enviar el correo solo a los usuarios seleccionados
@@ -89,25 +82,22 @@ foreach ($correosSeleccionados as $correo) {
     $asunto = $asuntos[$correo] ?? 'Solicitud Documentación Proceso de Selección / TF Auditores y Asesores S.A.S. BIC'; // Asunto personalizado o predeterminado
 
     $envio = enviarCorreoConLink($correo, $link, $asunto);
-    
+
     if ($envio !== true) {
-        $errores[] = $envio;
-    } else {
-        $resultado .= 'El mensaje se envió correctamente a ' . $correo . '<br>';
+        $errores[] = "Error al enviar a $correo: $envio";
     }
 }
 
 // Si hubo errores, mostramos los mensajes de error
 if (count($errores) > 0) {
-    $resultado = implode('<br>', $errores);
+    $mensaje = 'Hubo un problema al enviar el mensaje. Detalles: ' . implode('<br>', $errores);
 } else {
-    $mensajeEnviado = true;
+    $mensaje = 'El proceso se completó correctamente, pero no se detallan los correos enviados.';
 }
 
 // Redirigir con el mensaje y el estado
-$paginaAnterior = $_SERVER['HTTP_REFERER'] ?? '/admin/public/registrarUsuarios.php'; 
-$mensaje = $mensajeEnviado ? 'El mensaje se envió correctamente a los siguientes usuarios: ' . $resultado 
-                           : 'Hubo un problema al enviar el mensaje. Detalles: ' . $resultado;
-$status = $mensajeEnviado ? 'success' : 'error';
+$paginaAnterior = $_SERVER['HTTP_REFERER'] ?? '/admin/public/registrarUsuarios.php';
+$status = (count($errores) === 0) ? 'success' : 'error';
 header("Location: $paginaAnterior?status=$status&message=" . urlencode($mensaje));
 exit;
+?>
