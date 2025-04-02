@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['title'])) {
     <link rel="icon" href="/static/img/TF.ico" type="image/x-icon">
     <link rel="stylesheet" href="/admin/includes/css/años.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>TF - Años</title>
+    <title>Tf auditores y asesores SAS BIC</title>
 
     <!-- Estilos adicionales para ajustar la alerta -->
     <style>

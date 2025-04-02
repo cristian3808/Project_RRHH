@@ -69,7 +69,7 @@ if (mysqli_num_rows($result_project) > 0) {
     <link rel="stylesheet" href="/admin/includes/css/index.css">
     <link rel="icon" href="/static/img/TF.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>TF Formatos RRHH</title>
+    <title>Tf auditores y asesores SAS BIC</title>
 </head>
 <body class="bg-[#E1EEE2] font-sans">
 <header class="w-full bg-white mb-10 border-b-4 border-green-900">

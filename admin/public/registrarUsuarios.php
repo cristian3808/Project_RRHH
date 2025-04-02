@@ -76,12 +76,13 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Cristian Alejandro Jiménez Mora">
+    <link rel="icon" type="image/png" href="/static/img/TF.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.4/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="../includes/css/registrar_usuario.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.4/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Registrar Usuarios - Proyecto</title>
+    <title>Tf auditores y asesores SAS BIC</title>
 </head>
 <body class="bg-[#E1EEE2] font-sans">
 <header class="w-full bg-white mb-10 border-b-4 border-green-900">

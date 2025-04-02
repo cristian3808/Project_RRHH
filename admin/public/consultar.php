@@ -124,12 +124,13 @@ $usuarios = array_values($usuarios);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Cristian Alejandro Jiménez Mora">
+    <link rel="icon" type="image/png" href="/static/img/TF.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.4/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="../includes/css/registrar_usuario.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.4/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Registrar Usuarios - Proyecto</title>
+    <title>Tf auditores y asesores SAS BIC</title>
 </head>
 <body class="bg-[#E1EEE2] font-sans">
 <header class="w-full bg-white mb-10 border-b-4 border-green-900">
@@ -391,8 +392,14 @@ function filtrarUsuarios() {
     </div>
 </div>
 
-<script>
- function mostrarModal(usuario) {
+<script>function mostrarModal(usuario) {
+    // Función para formatear fechas de YYYY-MM-DD a DD/MM/YYYY
+    function formatearFecha(fechaISO) {
+        if (!fechaISO) return "N/A"; // Si la fecha es nula o vacía
+        let partes = fechaISO.split("-");
+        return `${partes[2]}/${partes[1]}/${partes[0]}`;
+    }
+
     // Lista de campos a llenar
     const campos = {
         "modalNombres": usuario.nombres,
@@ -404,8 +411,8 @@ function filtrarUsuarios() {
         "modalDireccion": usuario.direccion,
         "modalMunicipio": usuario.municipio_residencia,
         "modalLugarNacimiento": usuario.lugar_nacimiento,
-        "modalFechaNacimiento": usuario.fecha_nacimiento,
-        "modalFechaExpedicionCedula": usuario.fecha_expedicion_cedula,
+        "modalFechaNacimiento": formatearFecha(usuario.fecha_nacimiento), // Formateo aquí
+        "modalFechaExpedicionCedula": formatearFecha(usuario.fecha_expedicion_cedula), // Formateo aquí
         "modalNombreContacto": usuario.nombre_contacto,
         "modalTelefonoContacto": usuario.telefono_contacto,
         "modalTipoSangre": usuario.tipo_sangre,

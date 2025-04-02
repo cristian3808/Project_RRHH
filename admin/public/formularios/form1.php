@@ -21,12 +21,13 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Cristian Alejandro Jiménez Mora">
+    <link rel="icon" type="image/png" href="/static/img/TF.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <link href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Formulario</title>
+    <title>Tf auditores y asesores SAS BIC</title>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-[#E1EEE2]">
 <form id="formUsuario" action="../../controllers/guardarUsuariosForm1.php" method="POST" enctype="multipart/form-data" class="flex items-center justify-center min-h-screen">
@@ -34,7 +35,7 @@ $conn->close();
         <div class="flex justify-center mb-4">
             <img src="/static/img/TF.png" alt="Logo-TF" class="h-16">
         </div>
-        <h1 class="text-left font-bold text-lg md:text-xl mt-[10px] mb-5">Datos de la persona.</h1>
+        <h1 class="text-left font-bold text-lg md:text-xl mt-[10px] mb-5">Datos del candidato.</h1>
 
         <div class="grid gap-4 grid-cols-1 md:grid-cols-4">
             <div class="flex flex-col">
@@ -212,7 +213,7 @@ $conn->close();
             </div>
             <div class="flex flex-col">
                 <label class="custom-font text-xs mb-1 flex items-center whitespace-nowrap">
-                    23. Certificado territorialidad<br>(Máximo 1 Hoja) 
+                    27. Certificado territorialidad<br>(Máximo 1 Hoja) 
                     <span class="text-red-600">(Opcional)</span>
                 </label>
                 <input name="certificados_territorialidad" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs">
@@ -228,7 +229,7 @@ $conn->close();
         </div>
         <div  class="grid gap-4 grid-cols-1 md:grid-cols-4 mt-[20px]">
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">27. Talla de Camisa</label>
+                <label class="custom-font text-sm mb-2">28. Talla de Camisa</label>
                 <select id="talla_camisa" name="talla_camisa" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="S">S</option>
@@ -240,7 +241,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">28. Talla de Pantalón</label>
+                <label class="custom-font text-sm mb-2">29. Talla de Pantalón</label>
                 <select id="talla_pantalon" name="talla_pantalon" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="28">28</option>
@@ -255,7 +256,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">29. Talla de Botas</label>
+                <label class="custom-font text-sm mb-2">30. Talla de Botas</label>
                 <select id="talla_botas" name="talla_botas" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="35">35</option>
@@ -273,7 +274,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">30. Talla de Nomex</label>
+                <label class="custom-font text-sm mb-2">31. Talla de Nomex</label>
                 <select id="talla_nomex" name="talla_nomex" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="34">34</option>
@@ -292,7 +293,7 @@ $conn->close();
         <div class="grid gap-4 grid-cols-1 md:grid-cols-4 mt-4">
             <!-- Estado Civil -->
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">31. Estado Civil</label>
+                <label class="custom-font text-xs mb-1">32. Estado Civil</label>
                 <select id="estado_civil" name="estado_civil" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value="" disabled selected>Selecciona</option>
                     <option value="soltero">Soltero</option>
@@ -303,13 +304,13 @@ $conn->close();
 
             <!-- Nombre Pareja -->
             <div class="flex flex-col" id="nombre_pareja_container" style="display: none;">
-                <label class="custom-font text-xs mb-1">Nombre de la Pareja</label>
+                <label class="custom-font text-xs mb-1">Nombre del conyugue</label>
                 <input id="nombre_pareja" name="nombre_pareja" type="text" class="border border-gray-300 rounded py-1 px-2 text-xs w-[210px]">
             </div>
 
             <!-- Tiene Hijos -->
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">32. ¿Tiene Hijos?</label>
+                <label class="custom-font text-xs mb-1">33. ¿Tiene Hijos?</label>
                 <select id="tiene_hijos" name="tiene_hijos" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value="" disabled selected>Selecciona</option>
                     <option value="si">Sí</option>
@@ -317,7 +318,7 @@ $conn->close();
                 </select>
             </div>
 
-           <!-- Cuántos Hijos -->
+<!-- Cuántos Hijos -->
 <div class="flex flex-col" id="cuantos_hijos_container" style="display: none;">
     <label class="custom-font text-xs mb-1">¿Cuántos hijos?</label>
     <input id="cuantos_hijos" name="cuantos_hijos" type="number" min="1"
@@ -381,10 +382,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label class='custom-font text-xs mb-1'>Número Documento Hijo ${i}</label>
                         <input type='text' name='numero_documento_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
                     </div>
-                    <div class='flex flex-col'>
-                        <label class='custom-font text-xs mb-1'>Parentesco Hijo ${i}</label>
-                        <input type='text' name='parentesco_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
-                    </div>
                      <div class='flex flex-col'>
                         <label class='custom-font text-xs mb-1'>Edad Hijo ${i}</label>
                         <input type='text' name='edad_hijo_${i}' class='border border-gray-300 rounded py-1 px-2 text-xs' required>
@@ -398,16 +395,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-
-
-            <div class="mt-4 flex justify-center">
-            <button type="submit" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition transform hover:scale-105">
-                Enviar
-            </button>
-        </div>
+    <div class="mt-4 flex justify-center">
+        <button type="submit" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition transform hover:scale-105">
+            Enviar
+        </button>
     </div>
+</div>
 </form>
-
 <!-- Modal con imágenes -->
 <div id="modalImagenes" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-4 rounded-lg relative w-full max-w-7xl">
@@ -942,7 +936,20 @@ function getInputValue(id) {
         selectMunicipioResidencia.innerHTML = '<option value=""></option>';
         selectMunicipioResidencia.className = clasesOriginalesResidencia;
 
-        //Ordenar alfabéticamente los municipios
+        // Agregar manualmente municipios si no están en la lista
+        const municipiosExtra = [
+            { municipio: "BELÉN BOYACÁ", codigodane: "150640" },
+            { municipio: "BELÉN NARIÑO", codigodane: "521080" } // Código DANE de ejemplo
+        ];
+
+        municipiosExtra.forEach(municipioExtra => {
+            const existe = municipiosFiltrados.some(m => m.municipio === municipioExtra.municipio);
+            if (!existe) {
+                municipiosFiltrados.push(municipioExtra);
+            }
+        });
+
+        // Ordenar alfabéticamente los municipios
         municipiosFiltrados.sort((a, b) => a.municipio.localeCompare(b.municipio));
 
         // Crear las nuevas opciones ordenadas
