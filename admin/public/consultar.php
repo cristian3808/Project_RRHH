@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id']) && isset($_POST[
     $cedula = $_POST['cedula'];
     $correo = $_POST['correo'];
     $sql = "UPDATE usuarios_r SET nombres = '$nombre', apellidos = '$apellido', cedula = '$cedula', correo = '$correo' WHERE id = '$id' AND anio_id = '$anio_id'";
-    
     if (!mysqli_query($conn, $sql)) {
         echo "Error al actualizar el usuario: " . mysqli_error($conn);
     }
@@ -154,9 +153,6 @@ $usuarios = array_values($usuarios);
             <a href="/admin/años.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">AÑOS</a>
             <a href="/admin/index.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">PROYECTOS</a>
             <a href="/admin/public/rtaPrimerForm.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">RTA DATOS PERSONALES</a>
-            <a href="#" onclick="mostrarFormularioUsuarios();" class="text-green-900 hover:text-lime-600 font-bold py-2 px-4 rounded-md border-2 border-green-900 hover:bg-green-900 hover:text-white transition">
-                ENV FORM DATOS PERSONALES
-            </a>
         </nav>
 
         <!-- Botón de cierre de sesión -->
@@ -237,7 +233,7 @@ $usuarios = array_values($usuarios);
         </div>
     </div>
 </header>
-<div class="flex justify-center"><div class="w-full max-w-3xl mt-10">
+<div class="flex justify-center"><div class="w-[1000px] mt-10">
     <!-- 🔎 Caja de búsqueda -->
     <input type="text" id="buscador" onkeyup="filtrarUsuarios()" placeholder="Buscar por Nombre, Apellido o Cédula..."
         class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-green-600 focus:outline-none">
@@ -246,8 +242,8 @@ $usuarios = array_values($usuarios);
         <table class="w-full border-collapse bg-white">
             <thead class="bg-green-800 text-white">
                 <tr>
-                    <th class="border border-gray-300 px-4 py-2">Nombres</th>
-                    <th class="border border-gray-300 px-4 py-2">Apellidos</th>
+                    <th class="border border-gray-300 px-4 py-2 w-[200px]">Nombres</th>
+                    <th class="border border-gray-300 px-4 py-2 w-[200px]">Apellidos</th>
                     <th class="border border-gray-300 px-4 py-2">Cédula</th>
                     <th class="border border-gray-300 px-4 py-2">Correo</th>
                     <th class="border border-gray-300 px-4 py-2">Acción</th>

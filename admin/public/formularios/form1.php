@@ -164,11 +164,12 @@ $conn->close();
             <span>
                 Por favor subir los Documentos en <span class="text-red-600">(PDF)</span>.
             </span>
-            <!-- Botón para abrir el modal -->
-            <button id="btnAbrirModal" class="bg-[#EAE9E5] text-black px-4 py-2 border-2 border-black rounded flex items-center space-x-2">
-                <img src="/admin/includes/imgs/guia_tallas.png" alt="" class="w-6 h-6">
-                <span>Ver Guia De Tallas</span>
-            </button>
+        <!-- Botón para abrir el modal -->
+        <button id="btnAbrirModal" class="bg-[#EAE9E5] text-black px-2 py-1 border border-black rounded-md flex items-center space-x-1 text-sm font-normal">
+            <img src="/admin/includes/imgs/guia_tallas.png" alt="" class="w-4 h-4">
+            <span>Guía de Tallas</span>
+        </button>
+
         </h1>
         <div class=" grid gap-4 grid-cols-1 md:grid-cols-4"> 
             <div class="flex flex-col">
@@ -401,24 +402,37 @@ document.addEventListener("DOMContentLoaded", function () {
         </button>
     </div>
 </div>
-</form>
-<!-- Modal con imágenes -->
-<div id="modalImagenes" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
-    <div class="bg-white p-4 rounded-lg relative w-full max-w-7xl">
+</form><!-- Modal con imágenes -->
+<!-- Modal responsivo con imágenes -->
+<div id="modalImagenes" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
+    <div class="bg-[#E1EEE2] p-4 rounded-lg relative w-full max-w-7xl border border-gray-400 shadow-xl overflow-y-auto max-h-[95vh]">
+
         <!-- Botón de cierre -->
-        <button id="cerrarModal" class="absolute top-[-40px] right-[-25px] text-red-500 text-3xl w-[40px] h-[40px] flex items-center justify-center rounded-full bg-white border-2 border-black">&times;</button>
+        <button id="cerrarModal" 
+            class="absolute top-4 right-4 text-red-500 text-3xl w-10 h-10 flex items-center justify-center 
+                   rounded-full bg-white border-2 border-black z-50">
+            &times;
+        </button>
 
         <!-- Contenedor de imágenes -->
-        <div class="grid grid-cols-3 gap-6">
-            <img src="/admin/includes/imgs/guiatallascamisacaballero.png" class="rounded-lg object-cover transform transition-transform duration-300 hover:scale-110" style="width: 800px; height: auto; border: 2px solid #000000;">
-            <img src="/admin/includes/imgs/guiatallaspantaloncaballero.png" class="rounded-lg object-cover transform transition-transform duration-300 hover:scale-110" style="width: 800px; height: auto; border: 2px solid #000000;">
-            <img src="/admin/includes/imgs/guiatallascamisadama.png" class="rounded-lg object-cover transform transition-transform duration-300 hover:scale-110" style="width: 800px; height: auto; border: 2px solid #000000;">
-            <img src="/admin/includes/imgs/guiatallaspantalondama.png" class="rounded-lg object-cover transform transition-transform duration-300 hover:scale-110" style="width: 800px; height: auto; border: 2px solid #000000;">
-            <img src="/admin/includes/imgs/guiatallasbotas.png" class="rounded-lg object-cover transform transition-transform duration-300 hover:scale-110" style="width: 800px; height: auto; border: 2px solid #000000;">
-            <img src="/admin/includes/imgs/guiatallasnomex.png" class="rounded-lg object-cover transform transition-transform duration-300 hover:scale-110" style="width: 900px; height: auto; border: 2px solid #000000;">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="/admin/includes/imgs/guiatallascamisacaballero.jpg" 
+                 class="rounded-lg object-cover transition-transform duration-300 hover:scale-105">
+            <img src="/admin/includes/imgs/guiatallaspantaloncaballero.jpg" 
+                 class="rounded-lg object-cover transition-transform duration-300 hover:scale-105">
+            <img src="/admin/includes/imgs/guiatallascamisadama.jpg" 
+                 class="rounded-lg object-cover transition-transform duration-300 hover:scale-105">
+            <img src="/admin/includes/imgs/guiatallaspantalondama.jpg" 
+                 class="rounded-lg object-cover transition-transform duration-300 hover:scale-105">
+            <img src="/admin/includes/imgs/guiatallasbotas.jpg" 
+                 class="rounded-lg object-cover transition-transform duration-300 hover:scale-105">
+            <img src="/admin/includes/imgs/guiatallasnomex.jpg" 
+                 class="rounded-lg object-cover transition-transform duration-300 hover:scale-105">
         </div>
     </div>
 </div>
+
+
 <script>
     document.getElementById('btnAbrirModal').addEventListener('click', function() {
         document.getElementById('modalImagenes').classList.remove('hidden');

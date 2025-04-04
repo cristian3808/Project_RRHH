@@ -76,13 +76,12 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Cristian Alejandro Jiménez Mora">
-    <link rel="icon" type="image/png" href="/static/img/TF.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.4/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="../includes/css/registrar_usuario.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.4/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Tf auditores y asesores SAS BIC</title>
+    <title>Registrar Usuarios - Proyecto</title>
 </head>
 <body class="bg-[#E1EEE2] font-sans">
 <header class="w-full bg-white mb-10 border-b-4 border-green-900">
@@ -106,7 +105,6 @@ if (mysqli_num_rows($result) > 0) {
             <a href="/admin/años.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">AÑOS</a>
             <a href="/admin/index.php" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">PROYECTOS</a>
             <a href="/admin/public/rtaPrimerForm.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">RTA DATOS PERSONALES</a>
-            <a href="/admin/public/consultar.php?anio_id=<?php echo $anio_id; ?>" class="text-green-900 hover:text-lime-600 font-bold text-sm md:text-lg">CONSULTAR</a>
             <a href="#" onclick="mostrarFormularioUsuarios();" class="text-green-900 hover:text-lime-600 font-bold py-2 px-4 rounded-md border-2 border-green-900 hover:bg-green-900 hover:text-white transition">
                 ENV FORM DATOS PERSONALES
             </a>
@@ -168,32 +166,23 @@ if (mysqli_num_rows($result) > 0) {
             </form>
             <script>
                 function resetForm(event) {
-                event.preventDefault(); 
-                let form = document.getElementById("miFormulario");
-                let submitButton = form.querySelector("input[type='submit']");
-                
-                if (submitButton.disabled) return; // Evita doble clic
+                    event.preventDefault(); // Evita el envío inmediato del formulario
+                    let form = document.getElementById("miFormulario");
 
-                submitButton.disabled = true; // Deshabilita el botón temporalmente
-
-                fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form)
-                }).then(response => response.text())
-                .then(data => {
-                    console.log(data);
-                    if (data.includes("success")) {
-                        alert("Correo enviado correctamente");
-                        form.reset();
-                    } else {
-                        alert("Hubo un error al enviar el correo");
-                    }
-                }).catch(error => {
-                    alert("Error en la solicitud: " + error);
-                }).finally(() => {
-                    submitButton.disabled = false; // Habilita el botón nuevamente
-                });
-            }
+                    // Simular envío del formulario y limpiar los campos después
+                    fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form)
+                    }).then(response => {
+                        if (response.ok) {
+                            form.reset(); // Limpia el formulario si el envío fue exitoso
+                        } else {
+                            alert("Hubo un error al enviar el correo");
+                        }
+                    }).catch(error => {
+                        alert("Error en la solicitud: " + error);
+                    });
+                }
             </script>
         </div>
         </div>

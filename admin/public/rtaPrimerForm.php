@@ -230,16 +230,16 @@ if (isset($error_message)) {
         </p>
         <div class="sm:ml-4 mt-4 sm:mt-0 flex items-center space-x-4 " >
         <button onclick="downloadAllCedulas(<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : 'null'; ?>)" 
-            class="bg-[#2FA74D] border-2 border-black hover:bg-[#79CF88] text-white font-medium py-1 px-1 rounded-lg shadow-md flex items-center w-auto text-outline">
+            class="bg-[#ffffff] border-2 border-black hover:bg-[#79CF88] text-black font-medium py-1 px-1 rounded-lg shadow-md flex items-center w-auto">
             <img src="/admin/includes/imgs/cedula.png" alt="" class="mr-1 w-10 h-10"> 
             Descargar Todas las Cédulas
         </button>
             <a href="../controllers/generarExcelCompleto.php?anio_id=<?php echo $anio_id; ?>" 
-                class="bg-[#2FA74D] border-2 border-black hover:bg-[#79CF88] text-white font-medium py-1 px-2 rounded-lg shadow-md flex items-center w-auto text-outline">
+                class="bg-[#ffffff] border-2 border-black hover:bg-[#79CF88] text-black font-medium py-1 px-2 rounded-lg shadow-md flex items-center w-auto">
                 <img src="../includes/imgs/excel.jpg" class="w-10 h-10 mr-1" alt="excel">      
                 Descargar Excel
             </a>
-            <button class="bg-[#2FA74D] border-2 border-black hover:bg-[#79CF88] text-white font-medium py-1 px-2 rounded-lg shadow-md flex items-center w-auto text-outline" onclick="openModal()">
+            <button class="bg-[#ffffff] border-2 border-black hover:bg-[#79CF88] text-black font-medium py-1 px-2 rounded-lg shadow-md flex items-center w-auto" onclick="openModal()">
                 <img src="../includes/imgs/carnet.png" class="w-10 h-10 -mr-3" alt="excel">      
                 Generar Carnets
             </button>
@@ -253,7 +253,7 @@ if (isset($error_message)) {
                 }
             </style>
             <a href="../public/dotacion.php?anio_id=<?php echo $anio_id; ?>" 
-                class="bg-amber-300  border-2 border-black hover:bg-amber-200 text-black font-bold py-2 px-4 rounded-lg shadow-md flex items-center">
+                class="bg-[#ffffff]  border-2 border-black hover:bg-amber-200 text-black font-bold py-2 px-4 rounded-lg shadow-md flex items-center">
                 <img src="../includes/imgs/casco.png" class="w-13 h-8 mr-2" alt="dotacion">Dotación
             </a>
         </div>
@@ -288,7 +288,7 @@ if (isset($error_message)) {
                         </td>
                         <td class="py-3 px-4 text-center">
                             <a href="../controllers/generarPDF1.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
-                                class="text-black font-bold  <?php echo $boton_clase; ?> py-2 px-1 rounded-md whitespace-nowrap flex items-center justify-center"
+                                class="text-black <?php echo $boton_clase; ?> py-2 px-1 rounded-md whitespace-nowrap flex items-center justify-center"
                                 style="width: 180px; display: inline-flex;">
                                 <img src="/admin/includes/imgs/ojo.png" alt="" class="mr-2 w-5 h-5"> 
                                 Informe Completo
