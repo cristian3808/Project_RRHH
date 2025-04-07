@@ -290,7 +290,7 @@ if (isset($error_message)) {
                             <a href="../controllers/generarPDF1.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
                                 class="text-black <?php echo $boton_clase; ?> py-2 px-1 rounded-md whitespace-nowrap flex items-center justify-center"
                                 style="width: 180px; display: inline-flex;">
-                                <img src="/admin/includes/imgs/ojo.png" alt="" class="mr-2 w-5 h-5"> 
+                                <img src="/admin/includes/imgs/ojo1.svg" alt="" class="mr-2 w-5 h-5"> 
                                 Informe Completo
                             </a>
                         </td>
