@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nombres']) && isset($_
         echo "Error: " . mysqli_error($conn);
     }
 }
-
 // Manejar la actualización de un usuario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id']) && isset($_POST['nombres']) && isset($_POST['apellidos']) && isset($_POST['cedula']) && isset($_POST['correo'])) {
     $id = $_POST['id'];
@@ -44,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id']) && isset($_POST[
         echo "Error al actualizar el usuario: " . mysqli_error($conn);
     }
 }
-
 // Manejar la eliminación de un usuario
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
@@ -57,7 +55,6 @@ if (isset($_GET['delete_id'])) {
         echo "Error al eliminar el usuario: " . mysqli_error($conn);
     }
 }
-
 // Obtener todos los usuarios del proyecto filtrados por anio_id
 $sql = "SELECT * FROM usuarios WHERE anio_id = '$anio_id'";
 $result = mysqli_query($conn, $sql);
@@ -128,7 +125,7 @@ if (mysqli_num_rows($result) > 0) {
             </button>
 
             <h2 class="text-xl font-semibold text-center mb-4">Selecciona los usuarios para enviar el correo</h2>
-            <form id="miFormulario" action="../controllers/envioCorreo1.php?anio_id=<?php echo $anio_id; ?>" method="POST" onsubmit="resetForm(event)">
+            <form id="miFormulario" action="../controllers/envioCorreo1.php?anio_id=<?php echo $anio_id; ?>" method="POST">
                 <div class="mb-4">
                     <label for="usuarios" class="block text-lg font-medium text-gray-700">Usuarios:</label>
                     
@@ -164,31 +161,10 @@ if (mysqli_num_rows($result) > 0) {
                     <input type="submit" value="Enviar Correo" class="bg-[#2FA74D] text-white py-2 px-4 rounded-md hover:bg-lime-600 transition cursor-pointer">
                 </div>
             </form>
-            <script>
-                function resetForm(event) {
-                    event.preventDefault(); // Evita el envío inmediato del formulario
-                    let form = document.getElementById("miFormulario");
-
-                    // Simular envío del formulario y limpiar los campos después
-                    fetch(form.action, {
-                        method: form.method,
-                        body: new FormData(form)
-                    }).then(response => {
-                        if (response.ok) {
-                            form.reset(); // Limpia el formulario si el envío fue exitoso
-                        } else {
-                            alert("Hubo un error al enviar el correo");
-                        }
-                    }).catch(error => {
-                        alert("Error en la solicitud: " + error);
-                    });
-                }
-            </script>
         </div>
         </div>
     </div>
-</header>
-                                                
+</header>                                    
 <!-- Modal para agregar un nuevo usuario -->
 <div id="userModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
@@ -205,10 +181,8 @@ if (mysqli_num_rows($result) > 0) {
         </form>
     </div>
 </div>
-
 <!-- Tabla de usuarios registrados -->
 <div class="mt-6 bg-white rounded-lg shadow-md p-6 border-2 border-green-900 mx-auto w-[1260px]">
-
     <div class="flex flex-col sm:flex-row justify-between items-center mb-4 w-[1200px]">
         <p class="text-sm sm:text-base mb-6">Registrar Usuarios para el Proyecto: <strong><?php echo htmlspecialchars($project_name); ?></strong></p>
         <button class="bg-green-600 hover:bg-lime-500 text-white py-2 px-3 rounded-lg shadow-md sm:w-64 h-10 flex items-center justify-center hover:scale-85 duration-200 mt-4 sm:mt-0" onclick="openModal()">
@@ -248,7 +222,6 @@ if (mysqli_num_rows($result) > 0) {
         </table>
     </div>
 </div>
-
 <!-- Modal de Eliminación -->
 <div id="deleteUserModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-4">
@@ -266,7 +239,6 @@ if (mysqli_num_rows($result) > 0) {
         </form>
     </div>
 </div>
-
 <!-- Modal de Edición -->
 <div id="editUserModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-4">

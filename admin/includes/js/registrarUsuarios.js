@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
- // Para el campo "Nombres"
- document.querySelector('input[name="nombres"]').addEventListener('input', function () {
+// Para el campo "Nombres"
+document.querySelector('input[name="nombres"]').addEventListener('input', function () {
     this.value = this.value.replace(/\b\w/g, char => char.toUpperCase()) // Capitaliza la primera letra de cada palabra
                            .replace(/([a-zA-ZáéíóúÁÉÍÓÚ])([A-Z]+)/g, (match, firstChar, restOfWord) => firstChar + restOfWord.toLowerCase()); // Convierte las letras restantes a minúsculas
 });
@@ -152,8 +152,8 @@ document.querySelector('input[name="apellidos"]').addEventListener('input', func
                            .replace(/([a-zA-ZáéíóúÁÉÍÓÚ])([A-Z]+)/g, (match, firstChar, restOfWord) => firstChar + restOfWord.toLowerCase()); // Convierte las letras restantes a minúsculas
 });
 
- // Función para mostrar el menú en móviles
- document.getElementById('menuToggle').addEventListener('click', function() {
+// Función para mostrar el menú en móviles
+document.getElementById('menuToggle').addEventListener('click', function() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('hidden');
 });
