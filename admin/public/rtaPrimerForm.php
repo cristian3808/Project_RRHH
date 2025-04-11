@@ -264,8 +264,8 @@ if (isset($error_message)) {
     <table class="table-auto w-full bg-white shadow-lg rounded-lg overflow-hidden border-collapse">
             <thead class="bg-green-800 text-white">
                 <tr>
-                    <th class="py-3 px-4 text-center text-sm font-semibold">Nombres</th>
                     <th class="py-3 px-4 text-center text-sm font-semibold">Apellidos</th>
+                    <th class="py-3 px-4 text-center text-sm font-semibold">Nombres</th>
                     <th class="py-3 px-4 text-center text-sm font-semibold">Cédula</th>
                     <th class="py-3 px-4 text-center text-sm font-semibold w-[200px]">Respuestas</th>
                     <th class="py-3 px-4 text-center text-sm font-semibold w-[200px]">Descargar doc</th>
@@ -278,10 +278,10 @@ if (isset($error_message)) {
                     ?>
                     <tr class="hover:bg-gray-100 transition-colors">
                         <td class="py-3 px-4 text-center">
-                            <?php echo htmlspecialchars($usuario['nombres']); ?>
+                            <?php echo htmlspecialchars($usuario['apellidos']); ?>
                         </td>
                         <td class="py-3 px-4 text-center">
-                            <?php echo htmlspecialchars($usuario['apellidos']); ?>
+                            <?php echo htmlspecialchars($usuario['nombres']); ?>
                         </td>
                         <td class="py-3 px-4 text-center">
                             <?php echo htmlspecialchars($usuario['cedula']); ?>

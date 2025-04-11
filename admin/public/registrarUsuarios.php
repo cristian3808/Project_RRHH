@@ -173,8 +173,8 @@ if (mysqli_num_rows($result) > 0) {
             <span onclick="closeModal()" class="text-2xl font-bold text-gray-600 cursor-pointer">&times;</span>
         </div>
         <form method="POST" action="">
-            <input type="text" name="nombres" placeholder="Nombres" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
             <input type="text" name="apellidos" placeholder="Apellidos" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
+            <input type="text" name="nombres" placeholder="Nombres" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
             <input type="text" name="cedula" placeholder="Cédula" class="w-full p-3 mb-4 border border-gray-300 rounded-md " maxlength="10" required>
             <input type="email" name="correo" placeholder="Correo" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
             <button type="submit" class="w-full bg-green-600 hover:bg-lime-500 text-white font-bold py-3 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-100 focus:ring-opacity-50">Registrar</button>
@@ -196,8 +196,8 @@ if (mysqli_num_rows($result) > 0) {
         <table class="table-auto w-[1200px] bg-white shadow-md rounded-lg overflow-hidden border-collapse mt-6">   
             <thead>
                 <tr class="bg-green-800 text-white">
-                    <th class="py-2 px-4 text-center w-[250px]">Nombres</th>
                     <th class="py-2 px-4 text-center w-[250px]">Apellidos</th>
+                    <th class="py-2 px-4 text-center w-[250px]">Nombres</th>
                     <th class="py-2 px-4 text-center w-[250px]">Cédula</th>
                     <th class="py-2 px-4 text-center w-[300px]">Correo</th>
                     <th class="py-2 px-4 text-center w-[100px]">Acciones</th>
@@ -206,8 +206,8 @@ if (mysqli_num_rows($result) > 0) {
             <tbody>
                 <?php foreach ($usuarios as $usuario): ?>
                     <tr class="border-b">
-                        <td class="py-2 px-4 text-center"><?php echo htmlspecialchars($usuario['nombres']); ?></td>
                         <td class="py-2 px-4 text-center"><?php echo htmlspecialchars($usuario['apellidos']); ?></td>
+                        <td class="py-2 px-4 text-center"><?php echo htmlspecialchars($usuario['nombres']); ?></td>
                         <td class="py-2 px-4 text-center"><?php echo htmlspecialchars($usuario['cedula']); ?></td>
                         <td class="py-2 px-4 text-center"><?php echo htmlspecialchars($usuario['correo']); ?></td>
                         <td class="py-2 px-4 text-center">
@@ -248,8 +248,8 @@ if (mysqli_num_rows($result) > 0) {
         </div>
         <form id="editUserForm" method="POST" action="">
             <input type="hidden" id="editUserId" name="id">
-            <input type="text" id="editNombre" name="nombres" placeholder="Nombres" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
             <input type="text" id="editApellido" name="apellidos" placeholder="Apellidos" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
+            <input type="text" id="editNombre" name="nombres" placeholder="Nombres" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
             <input type="text" id="editCedula" name="cedula" placeholder="Cédula" class="w-full p-3 mb-4 border border-gray-300 rounded-md" maxlength="10" required>
             <input type="email" id="editCorreo" name="correo" placeholder="Correo" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
             <button type="submit" class="w-full bg-green-600 hover:bg-lime-500 text-white font-bold py-3 px-6 rounded-lg shadow-md">Actualizar Usuario</button>
