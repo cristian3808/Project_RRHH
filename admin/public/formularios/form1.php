@@ -173,48 +173,58 @@ $conn->close();
         </h1>
         <div class=" grid gap-4 grid-cols-1 md:grid-cols-4"> 
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">17. Hoja de vida actual.<br>(Máximo 3 Hojas)</label>
+                <label class="custom-font text-xs mb-1">17. Hoja de vida actual.<br></label>
                 <input name="hoja_vida" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">18. Cédula.<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">18. Cédula.<br></label>
                 <input name="subir_cedula" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-5">19. Certificados de estudio </label>
+                <label class="custom-font text-xs mb-1">19. Certificados de estudio </label>
                 <input name="certificados_estudio" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-5">20. Certificados laborales</label>
+                <label class="custom-font text-xs mb-1">20. Certificados laborales</label>
                 <input name="certificados_laborales" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">21. Foto fondo blanco (3x4)<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">21. Foto fondo blanco (3x4)<br></label>
                 <input name="foto" type="file" accept="image/jpg, image/jpeg, image/png" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">22. Certificado EPS<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">22. Certificado EPS<br></label>
                 <input name="certificados_eps" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">23. Carnet vacunas<br>(Máximo 5 Hojas)</label>
-                <input name="carnet_vacunas" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">24. Certificacion bancaria<br>(Máximo 1 Hoja)</label>
-                <input name="certificacion_bancaria" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">25. Certificado antecedentes<br>(Máximo 1 Hoja)</label>
-                <input name="certificado_antecedentes" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
-            </div>
-            <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">26. Certificado AFP<br>(Máximo 1 Hoja)</label>
+                <label class="custom-font text-xs mb-1">23. Certificado AFP<br></label>
                 <input name="certificado_afp" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
             </div>
             <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">24. Carnet vacunas<br></label>
+                <input name="carnet_vacunas" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">25. Certificacion bancaria<br></label>
+                <input name="certificacion_bancaria" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">26. Certificado antecedente Policia <br></label>
+                <input name="cert_antecedente_policia" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">27. Certificado antecedente Contraloria<br></label>
+                <input name="cert_antecedente_contraloria" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+            <div class="flex flex-col">
+                <label class="custom-font text-xs mb-1">28. Certif. antecedente Procuraduria<br></label>
+                <input name="cert_antecedente_procuraduria" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
+            </div>
+
+            <div class="flex flex-col">
                 <label class="custom-font text-xs mb-1 flex items-center whitespace-nowrap">
-                    27. Certificado territorialidad<br>(Máximo 1 Hoja) 
+                    29. Certificado territorialidad<br>
                     <span class="text-red-600">(Opcional)</span>
                 </label>
                 <input name="certificados_territorialidad" type="file" accept="application/pdf" class="border border-gray-300 rounded py-1 px-2 text-xs">
@@ -230,7 +240,7 @@ $conn->close();
         </div>
         <div  class="grid gap-4 grid-cols-1 md:grid-cols-4 mt-[20px]">
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">28. Talla de Camisa</label>
+                <label class="custom-font text-sm mb-2">30. Talla de Camisa</label>
                 <select id="talla_camisa" name="talla_camisa" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="S">S</option>
@@ -242,7 +252,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">29. Talla de Pantalón</label>
+                <label class="custom-font text-sm mb-2">31. Talla de Pantalón</label>
                 <select id="talla_pantalon" name="talla_pantalon" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="28">28</option>
@@ -257,7 +267,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">30. Talla de Botas</label>
+                <label class="custom-font text-sm mb-2">32. Talla de Botas</label>
                 <select id="talla_botas" name="talla_botas" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="35">35</option>
@@ -275,7 +285,7 @@ $conn->close();
                 </select>
             </div>
             <div class="flex flex-col">
-                <label class="custom-font text-sm mb-2">31. Talla de Nomex</label>
+                <label class="custom-font text-sm mb-2">33. Talla de Nomex</label>
                 <select id="talla_nomex" name="talla_nomex" class="border border-gray-300 rounded py-2 px-3 text-sm">
                     <option value="" disabled selected>Selecciona tu talla</option>
                     <option value="34">34</option>
@@ -294,7 +304,7 @@ $conn->close();
         <div class="grid gap-4 grid-cols-1 md:grid-cols-4 mt-4">
             <!-- Estado Civil -->
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">32. Estado Civil</label>
+                <label class="custom-font text-xs mb-1">34. Estado Civil</label>
                 <select id="estado_civil" name="estado_civil" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value="" disabled selected>Selecciona</option>
                     <option value="soltero">Soltero</option>
@@ -311,7 +321,7 @@ $conn->close();
 
             <!-- Tiene Hijos -->
             <div class="flex flex-col">
-                <label class="custom-font text-xs mb-1">33. ¿Tiene Hijos?</label>
+                <label class="custom-font text-xs mb-1">35. ¿Tiene Hijos?</label>
                 <select id="tiene_hijos" name="tiene_hijos" class="border border-gray-300 rounded py-1 px-2 text-xs" required>
                     <option value="" disabled selected>Selecciona</option>
                     <option value="si">Sí</option>
@@ -319,16 +329,16 @@ $conn->close();
                 </select>
             </div>
 
-<!-- Cuántos Hijos -->
-<div class="flex flex-col" id="cuantos_hijos_container" style="display: none;">
-    <label class="custom-font text-xs mb-1">¿Cuántos hijos?</label>
-    <input id="cuantos_hijos" name="cuantos_hijos" type="number" min="1"
-        class="border border-gray-300 rounded py-1 px-2 text-xs w-[210px]">
-</div>
-</div>
+            <!-- Cuántos Hijos -->
+            <div class="flex flex-col" id="cuantos_hijos_container" style="display: none;">
+                <label class="custom-font text-xs mb-1">¿Cuántos hijos?</label>
+                <input id="cuantos_hijos" name="cuantos_hijos" type="number" min="1"
+                class="border border-gray-300 rounded py-1 px-2 text-xs w-[210px]">
+            </div>
+        </div>
 
-<!-- Sección para hijos -->
-<div id="datos_hijos"></div>
+        <!-- Sección para hijos -->
+        <div id="datos_hijos"></div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -396,12 +406,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-    <div class="mt-4 flex justify-center">
-        <button type="submit" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition transform hover:scale-105">
-            Enviar
-        </button>
+        <div class="mt-4 flex justify-center">
+            <button type="submit" class="bg-green-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition transform hover:scale-105">
+                Enviar
+            </button>
+        </div>
     </div>
-</div>
 </form><!-- Modal con imágenes -->
 <!-- Modal responsivo con imágenes -->
 <div id="modalImagenes" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">

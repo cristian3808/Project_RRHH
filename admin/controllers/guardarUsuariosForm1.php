@@ -20,7 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $certificadosEps = $_POST['certificados_eps'];
     $carnetVacunas = $_POST['carnet_vacunas'];
     $certificacionBancaria = $_POST['certificacion_bancaria'];
-    $certificadosAntecedentes = $_POST['certificado_antecedentes'];
+    $certAntecedentePolicia = $_POST['cert_antecedente_policia'];
+    $certAntecedenteContraloria = $_POST['cert_antecedente_contraloria'];
+    $certAntecedenteProcuraduria = $_POST['cert_antecedente_procuraduria'];
     $certificadosAfp = $_POST['certificado_afp'];
     $fondo_pension = $_POST['fondo_pension'];
     $arl = $_POST['arl'];
@@ -84,16 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo debe ser un PDF.");
             }
-            // Contar el número de páginas del PDF
-            $pdfContent = file_get_contents($hojaVidaTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            // Si el PDF tiene más de 3 páginas, mostrar un error y redirigir
-            if ($numPages > 3) {
-                // Mostrar la modal con el mensaje de error
-                echo 'Error: La hoja de vida no puede tener más de 3 páginas.';
-                exit; // Detenemos la ejecución del script PHP
-            }
-            // Si pasa todas las validaciones, entonces guardamos el archivo
+           
+            //Guardar el archivo
             $uploadDir = "uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
@@ -141,12 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo de certificados EPS debe ser un PDF.");
             }
-            $pdfContent = file_get_contents($certificadosEpsTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            if ($numPages > 1) {
-                echo 'Error: El archivo de certificados EPS no puede tener más de 1 página.';
-                exit; 
-            }
+    
             $uploadDir = "uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);  
@@ -165,12 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo de carnet de vacunas debe ser un PDF.");
             }
-            $pdfContent = file_get_contents($carnetVacunasTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            if ($numPages > 5) {
-                echo 'Error: El archivo de carnet de vacunas no puede tener más de 5 páginas.';
-                exit;
-            }
+            
             $uploadDir = "uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);  
@@ -196,12 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo de certificación bancaria debe ser un PDF.");
             }
-            $pdfContent = file_get_contents($certificacionBancariaTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            if ($numPages > 1) {
-                echo 'Error: El archivo de certificación bancaria no puede tener más de 1 página.';
-                exit;
-            }
+            
             $uploadDir = "uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);  
@@ -213,27 +192,60 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         } 
         
-        if (isset($_FILES['certificado_antecedentes']) && $_FILES['certificado_antecedentes']['error'] === UPLOAD_ERR_OK) {
-            $certificadosAntecedentes = $_FILES['certificado_antecedentes']['name'];
-            $certificadosAntecedentesTemp = $_FILES['certificado_antecedentes']['tmp_name'];
-            $fileType = mime_content_type($certificadosAntecedentesTemp);
+        if (isset($_FILES['cert_antecedente_policia']) && $_FILES['cert_antecedente_policia']['error'] === UPLOAD_ERR_OK) {
+            $certAntecedentePolicia = $_FILES['cert_antecedente_policia']['name'];
+            $certAntecedentePoliciaTemp = $_FILES['cert_antecedente_policia']['tmp_name'];
+            $fileType = mime_content_type($certAntecedentePoliciaTemp);
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo de certificado de antecedentes debe ser un PDF.");
             }
-            $pdfContent = file_get_contents($certificadosAntecedentesTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            if ($numPages > 1) {
-                echo 'Error: El archivo de certificado de antecedentes no puede tener más de 1 página.';
-                exit;
-            }
+           
             $uploadDir = "uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);  
             }
-            $uploadFileAntecedentes = $uploadDir . basename($certificadosAntecedentes);
-            if (move_uploaded_file($certificadosAntecedentesTemp, $uploadFileAntecedentes)) {
+            $uploadFileAntecedentePolicial = $uploadDir . basename($certAntecedentePolicia);
+            if (move_uploaded_file($certificadosAntecedentePolicialTemp, $uploadFileAntecedentePolicial)) {
             } else {
-                echo "Error al guardar el archivo de certificado de antecedentes.";
+                echo "Error al guardar el archivo de certificado de antecedente policia.";
+            }
+        }
+
+        if (isset($_FILES['cert_antecedente_contraloria']) && $_FILES['cert_antecedente_contraloria']['error'] === UPLOAD_ERR_OK) {
+            $certAntecedenteContraloria = $_FILES['cert_antecedente_contraloria']['name'];
+            $certAntecedenteContraloriaTemp = $_FILES['cert_antecedente_contraloria']['tmp_name'];
+            $fileType = mime_content_type($certAntecedenteContraloriaTemp);
+            if ($fileType !== 'application/pdf') {
+                die("Error: El archivo de certificado de antecedentes debe ser un PDF.");
+            }
+           
+            $uploadDir = "uploads/";
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);  
+            }
+            $uploadFileAntecedenteContraloria = $uploadDir . basename($certAntecedenteContraloria);
+            if (move_uploaded_file($certificadosAntecedenteContraloriaTemp, $uploadFileAntecedenteContraloria)) {
+            } else {
+                echo "Error al guardar el archivo de certificado de antecedente contraloria.";
+            }
+        }
+
+        if (isset($_FILES['cert_antecedente_procuraduria']) && $_FILES['cert_antecedente_procuraduria']['error'] === UPLOAD_ERR_OK) {
+            $certAntecedenteProcuraduria = $_FILES['cert_antecedente_procuraduria']['name'];
+            $certAntecedenteProcuraduriaTemp = $_FILES['cert_antecedente_procuraduria']['tmp_name'];
+            $fileType = mime_content_type($certAntecedenteProcuraduriaTemp);
+            if ($fileType !== 'application/pdf') {
+                die("Error: El archivo de certificado de antecedentes debe ser un PDF.");
+            }
+           
+            $uploadDir = "uploads/";
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);  
+            }
+            $uploadFileAntecedenteProcuraduria = $uploadDir . basename($certAntecedenteProcuraduria);
+            if (move_uploaded_file($certificadosAntecedenteProcuraduriaTemp, $uploadFileAntecedenteProcuraduria)) {
+            } else {
+                echo "Error al guardar el archivo de certificado de antecedente policia.";
             }
         }
         
@@ -244,12 +256,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo de certificado de AFP debe ser un PDF.");
             }
-            $pdfContent = file_get_contents($certificadosAfpTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            if ($numPages > 1) {
-                echo 'Error: El archivo de certificado de AFP no puede tener más de 1 página.';
-                exit;
-            }
+           
             $uploadDir = "uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);  
@@ -268,12 +275,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($fileType !== 'application/pdf') {
                 die("Error: El archivo de la cédula debe ser un PDF.");
             }
-            $pdfContent = file_get_contents($subirCedulaTemp);
-            $numPages = preg_match_all("/\/Type\s*\/Page[^s]/", $pdfContent, $matches);
-            if ($numPages > 1) {
-                echo 'Error: El archivo de la cédula no puede tener más de 1 página.';
-                exit;
-            }
+           
             $uploadDir = "../../uploads/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);  
@@ -292,21 +294,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             nombres, apellidos, genero, cedula, telefono, fecha_nacimiento, lugar_nacimiento, direccion,
             fecha_expedicion_cedula, correo, municipio_residencia, nombre_contacto, telefono_contacto, tipo_sangre, eps, 
             fondo_pension, arl, hoja_vida, subir_cedula, certificados_estudio, certificados_laborales, foto, certificados_eps, 
-            carnet_vacunas, certificacion_bancaria, certificado_antecedentes, certificado_afp, certificados_territorialidad, 
-            talla_camisa, talla_pantalon, talla_botas, talla_nomex, enviado, estado_civil, nombre_pareja, tiene_hijos, cuantos_hijos) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            carnet_vacunas, certificacion_bancaria, cert_antecedente_policia,cert_antecedente_contraloria,cert_antecedente_procuraduria, 
+            certificado_afp, certificados_territorialidad,talla_camisa, talla_pantalon, talla_botas, talla_nomex, enviado, estado_civil, 
+            nombre_pareja, tiene_hijos, cuantos_hijos) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         if (!$stmt_usuarios) {
             die("Error en la preparación de la consulta de usuarios: " . $conn->error);
         }
 
         $stmt_usuarios->bind_param(
-            "sssssssssssssssssssssssssssssssissssi",
+            "sssssssssssssssssssssssssssssssssissssi",
             $nombres, $apellidos, $genero, $cedula, $telefono, $fechaNacimiento, $lugar_nacimiento, $direccion,
             $fecha_expedicion_cedula, $correo, $municipio_residencia, $nombre_contacto, $telefono_contacto, $tipo_sangre, $eps, 
             $fondo_pension, $arl, $uploadFile, $uploadFileCedula, $uploadFileEstudios, $uploadFileLaborales, $uploadFileImagen, 
-            $uploadFileEps, $uploadFileVacunas, $uploadFileBancaria, $uploadFileAntecedentes, $uploadFileAfp, $uploadFileTerritoriales, 
-            $talla_camisa, $talla_pantalon, $talla_botas, $talla_nomex, $enviado, $estado_civil, $nombre_pareja, $tiene_hijos, $cuantos_hijos
+            $uploadFileEps, $uploadFileVacunas, $uploadFileBancaria, $uploadFileAntecedentePolicial, $uploadFileAntecedenteContraloria, 
+            $uploadFileAntecedenteProcuraduria,$uploadFileAfp, $uploadFileTerritoriales, $talla_camisa, $talla_pantalon, $talla_botas, 
+            $talla_nomex, $enviado, $estado_civil, $nombre_pareja, $tiene_hijos, $cuantos_hijos
         );
 
         // Ejecutar inserción en `usuarios_r`

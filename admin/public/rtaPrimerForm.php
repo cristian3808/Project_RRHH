@@ -345,10 +345,18 @@ if (isset($error_message)) {
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 hover:text-green-600 rounded-md transition duration-200 text-center">
                                         CERTIFICACION BANCARIA
                                     </a>
-                                    <a href="../controllers/generarCertificacionAntecedentes.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
+                                    <a href="../controllers/generarCertificacionAntecedentePolicia.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 hover:text-green-600 rounded-md transition duration-200 text-center">
-                                        CERTIFICACION ANTECEDENTES
-                                    </a>     
+                                        CERTIFICACION ANTECEDENTE POLICIA
+                                    </a>  
+                                    <a href="../controllers/generarCertificacionAntecedenteContraloria.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 hover:text-green-600 rounded-md transition duration-200 text-center">
+                                        CERTIFICACION ANTECEDENTE CONTRALORIA
+                                    </a> 
+                                    <a href="../controllers/generarCertificacionAntecedenteProcuraduria.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 hover:text-green-600 rounded-md transition duration-200 text-center">
+                                        CERTIFICACION ANTECEDENTE PROCURADURIA
+                                    </a>    
                                     <a href="../controllers/generarCertificadoAfp.php?cedula=<?php echo $usuario['cedula']; ?>&anio_id=<?php echo isset($_GET['anio_id']) ? $_GET['anio_id'] : ''; ?>" 
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 hover:text-green-600 rounded-md transition duration-200 text-center">
                                         CERTIFICADO AFP

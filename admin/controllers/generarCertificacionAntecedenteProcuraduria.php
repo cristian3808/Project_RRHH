@@ -24,11 +24,11 @@ if (!$usuario) {
 
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/admin/controllers/uploads/';
 
-$carnetVacunasArchivo = $usuario['carnet_vacunas'];
-$carnetVacunasRuta = $uploadsDir . basename($carnetVacunasArchivo);
+$antecedenteProcuraduriaArchivo = $usuario['cert_antecedente_procuraduria'];
+$antecedenteProcuraduriaRuta = $uploadsDir . basename($antecedenteProcuraduriaArchivo);
 
-if (!file_exists($carnetVacunasRuta)) {
-    die("El archivo del Carnet de Vacunas no existe.");
+if (!file_exists($antecedenteProcuraduriaRuta)) {
+    die("El archivo de Certificado de Antecedentes de la Procuraduría no existe.");
 }
 
 $usuariosDir = $_SERVER['DOCUMENT_ROOT'] . '/usuarios/';
@@ -44,9 +44,9 @@ $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $pdf->SetFont('helvetica', '', 12);
 
-if ($carnetVacunasRuta !== null) {
-    if (pathinfo($carnetVacunasRuta, PATHINFO_EXTENSION) == 'pdf') {
-        $pageCount = $pdf->setSourceFile($carnetVacunasRuta);
+if ($antecedenteProcuraduriaRuta !== null) {
+    if (pathinfo($antecedenteProcuraduriaRuta, PATHINFO_EXTENSION) == 'pdf') {
+        $pageCount = $pdf->setSourceFile($antecedenteProcuraduriaRuta);
         for ($i = 1; $i <= $pageCount; $i++) {
             $tpl = $pdf->importPage($i);
             $pdf->useTemplate($tpl, 10, 10, 190);
@@ -55,17 +55,17 @@ if ($carnetVacunasRuta !== null) {
                 $pdf->AddPage();
             }
         }
-    } elseif (in_array(pathinfo($carnetVacunasRuta, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) {
-        list($width, $height) = getimagesize($carnetVacunasRuta);
+    } elseif (in_array(pathinfo($antecedenteProcuraduriaRuta, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) {
+        list($width, $height) = getimagesize($antecedenteProcuraduriaRuta);
         $imageHeight = (180 * $height) / $width;
 
-        $pdf->Image($carnetVacunasRuta, 10, 50, 180, $imageHeight, pathinfo($carnetVacunasRuta, PATHINFO_EXTENSION));
+        $pdf->Image($antecedenteProcuraduriaRuta, 10, 50, 180, $imageHeight, pathinfo($antecedenteProcuraduriaRuta, PATHINFO_EXTENSION));
     }
 } else {
-    $pdf->Write(0, "No se encuentra el archivo del Carnet de Vacunas.");
+    $pdf->Write(0, "No se encuentra el archivo de Certificado de Antecedentes de la Procuraduría.");
 }
 
-$pdfOutput = $_SERVER['DOCUMENT_ROOT'] . '/usuarios/' . 'Carnet De Vacunas.pdf';
+$pdfOutput = $_SERVER['DOCUMENT_ROOT'] . '/usuarios/' . 'Certificado de Antecedentes Procuraduría.pdf';
 
 if (file_exists($pdfOutput)) {
     unlink($pdfOutput);

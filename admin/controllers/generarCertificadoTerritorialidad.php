@@ -39,6 +39,10 @@ if (!file_exists($usuariosDir)) {
 }
 
 $pdf = new TcpdfFpdi();
+
+// ✅ Desactivar cabecera y pie de página
+$pdf->setPrintHeader(false);
+
 $pdf->AddPage(); 
 
 $pdf->SetFont('helvetica', '', 12);

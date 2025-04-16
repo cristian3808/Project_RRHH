@@ -24,11 +24,11 @@ if (!$usuario) {
 
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/admin/controllers/uploads/';
 
-$certificadoAntecedentesArchivo = $usuario['certificado_antecedentes'];
-$certificadoAntecedentesRuta = $uploadsDir . basename($certificadoAntecedentesArchivo);
+$antecedenteContraloriaArchivo = $usuario['cert_antecedente_contraloria'];
+$antecedenteContraloriaRuta = $uploadsDir . basename($antecedenteContraloriaArchivo);
 
-if (!file_exists($certificadoAntecedentesRuta)) {
-    die("El archivo del Certificado de Antecedentes no existe.");
+if (!file_exists($antecedenteContraloriaRuta)) {
+    die("El archivo de Certificado de Antecedentes de la Contraloría no existe.");
 }
 
 $usuariosDir = $_SERVER['DOCUMENT_ROOT'] . '/usuarios/';
@@ -37,12 +37,16 @@ if (!file_exists($usuariosDir)) {
 }
 
 $pdf = new TcpdfFpdi();
+
+// ✅ Desactivar cabecera y pie de página
+$pdf->setPrintHeader(false);
+
 $pdf->AddPage();
 $pdf->SetFont('helvetica', '', 12);
 
-if ($certificadoAntecedentesRuta !== null) {
-    if (pathinfo($certificadoAntecedentesRuta, PATHINFO_EXTENSION) == 'pdf') {
-        $pageCount = $pdf->setSourceFile($certificadoAntecedentesRuta);
+if ($antecedenteContraloriaRuta !== null) {
+    if (pathinfo($antecedenteContraloriaRuta, PATHINFO_EXTENSION) == 'pdf') {
+        $pageCount = $pdf->setSourceFile($antecedenteContraloriaRuta);
         for ($i = 1; $i <= $pageCount; $i++) {
             $tpl = $pdf->importPage($i);
             $pdf->useTemplate($tpl, 10, 10, 190);
@@ -51,17 +55,17 @@ if ($certificadoAntecedentesRuta !== null) {
                 $pdf->AddPage();
             }
         }
-    } elseif (in_array(pathinfo($certificadoAntecedentesRuta, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) {
-        list($width, $height) = getimagesize($certificadoAntecedentesRuta);
+    } elseif (in_array(pathinfo($antecedenteContraloriaRuta, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) {
+        list($width, $height) = getimagesize($antecedenteContraloriaRuta);
         $imageHeight = (180 * $height) / $width;
 
-        $pdf->Image($certificadoAntecedentesRuta, 10, 50, 180, $imageHeight, pathinfo($certificadoAntecedentesRuta, PATHINFO_EXTENSION));
+        $pdf->Image($antecedenteContraloriaRuta, 10, 50, 180, $imageHeight, pathinfo($antecedenteContraloriaRuta, PATHINFO_EXTENSION));
     }
 } else {
-    $pdf->Write(0, "No se encuentra el archivo del Certificado de Antecedentes.");
+    $pdf->Write(0, "No se encuentra el archivo de Certificado de Antecedentes de la Contraloría.");
 }
 
-$pdfOutput = $_SERVER['DOCUMENT_ROOT'] . '/usuarios/' . 'Certificado De Antecedentes.pdf';
+$pdfOutput = $_SERVER['DOCUMENT_ROOT'] . '/usuarios/' . 'Certificado de Antecedentes Contraloría.pdf';
 
 if (file_exists($pdfOutput)) {
     unlink($pdfOutput);
