@@ -13,12 +13,12 @@ function enviarCorreoConLink($correo, $link, $asunto) {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
 
-    $mail->Username = 'pruebasoftwarerc@gmail.com';
-    $mail->Password = 'abkgbjoekgsvhtnj';
+    $mail->Username = 'seleccion@tfauditores.com';
+    $mail->Password = 'mwcpxjivpngbvqnx';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom('pruebassoftaware@gmail.com');
+    $mail->setFrom('seleccion@tfauditores.com');
     $mail->addAddress($correo);
 
     $mail->isHTML(true);
