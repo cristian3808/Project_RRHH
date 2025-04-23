@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 25-02-2025 a las 16:48:29
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 23-04-2025 a las 22:04:10
+-- Versión del servidor: 10.11.10-MariaDB
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `srh`
+-- Base de datos: `u498964512_srh`
 --
 
 -- --------------------------------------------------------
@@ -176,6 +176,21 @@ CREATE TABLE `guantes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `hijos`
+--
+
+CREATE TABLE `hijos` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `nombre_completo_hijo` varchar(100) NOT NULL,
+  `tipo_documento_hijo` varchar(50) NOT NULL,
+  `numero_documento_hijo` varchar(50) NOT NULL,
+  `edad_hijo` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `jeans_hombre`
 --
 
@@ -240,6 +255,15 @@ CREATE TABLE `proyectos` (
   `anio_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `proyectos`
+--
+
+INSERT INTO `proyectos` (`id`, `titulo`, `anio_id`) VALUES
+(12, 'Ecopetrol', 1),
+(14, 'Staff TF', 1),
+(16, 'prueba', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -282,6 +306,40 @@ CREATE TABLE `usuarios` (
   `anio_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `anio_id`) VALUES
+(9, 'Cristian Alejandro', 'Jimenez Mora', '1012329993', 'cristian.mora3808@gmail.com', 12),
+(10, 'Sandra Liliana', 'Sissa Pinzon', '53069693', 'liliana.sissa@tfauditores.net', 12),
+(14, 'Manuel Antonio', 'Tibaquira Naranjo', '19348582', 'manueltibaquira@tfauditores.com', 14),
+(15, 'Clara Virginia', 'Forero Rojas', '51594132', 'claravirginiaforero@tfauditores.com', 14),
+(16, 'Luis Carlos', 'Chavarro Palacios', '19078945', 'luis.chavarro@tfauditores.com', 14),
+(17, 'Hernan Mauricio', 'Carreno Beltran', '91539493', 'hernan.carrenob@tfauditores.com', 14),
+(18, 'Jairo Saul', 'Rincon Baez', '74326034', 'jairo.rincon@tfauditores.com', 14),
+(19, 'Luisa Fernanda', 'Riveros Fraile', '1019030463', 'luisa.riveros@tfauditores.com', 14),
+(20, 'Victor Armando', 'Gonzalez Plata', '13566088', 'victor.gonzalez@tfauditores.com', 14),
+(21, 'Deisy', 'Mendivelso Torres', '53062349', 'deisy.mendivelso@tfauditores.com', 14),
+(22, 'Maria Del Rosario', 'Romero', '52107102', 'ROSARIO23.ROMERO@hotmail.com', 14),
+(23, 'Herman', 'Villamarin Castaneda', '79748004', 'herman.villamarin@tfauditores.com', 14),
+(24, 'Yenny Yanibe', 'Lopez Morales', '52888542', 'yenny.lopez@tfauditores.com', 14),
+(25, 'Dilia Deisa', 'Cardenas Romero', '52807859', 'recepcion@tfauditores.com', 14),
+(26, 'Clara Yolanda', 'Chaparro Barrera', '39724569', 'clara.chaparro@tfauditores.com', 14),
+(27, 'Manuel Esteban', 'Tibaquira Forero', '80185831', 'esteban.tibaquira@tfauditores.com', 14),
+(28, 'Laura Cristina', 'Tibaquira Forero', '1019029450', 'laura.tibaquira@tfauditores.com', 14),
+(29, 'Luis Antonio', 'Rojas Salcedo', '1108763265', 'luis.rojas@tfauditores.com', 14),
+(30, 'Mario Rodolfo', 'Acosta Navarrete', '1024525584', 'mario.acosta@tfauditores.com', 14),
+(31, 'Diana Marcela', 'Rubiano Sepulveda', '52897873', 'diana.rubiano@tfauditores.com', 14),
+(32, 'Jesica Dayana', 'Achury Quevedo', '1022439201', 'jesica.achury@tfauditores.com', 14),
+(33, 'Jesus Eduardo', 'Plata Garcia', '1140820849', 'jesus.plata@tfauditores.com', 14),
+(34, 'Edgar Alberto', 'Gaitan Fajardo', '79598590', 'edgar.gaitan@tfauditores.com', 14),
+(35, 'Adriana Patricia', 'Tibaquira Campos', '52955035', 'adriana.tibaquira@tfauditores.com', 14),
+(36, 'Raul Antonio', 'Ballen Hernandez', '80114430', 'raul.ballen@tfauditores.com', 14),
+(37, 'Juan Sebastian', 'Chia Montana ', '1015428612', 'hseq@tfauditores.com', 14),
+(38, 'Andres David', 'Ortiz Valencia', '1026568883', 'seleccion@tfauditores.com', 14),
+(39, 'Laura Daniela', 'Joya Oicata', '1010126753', 'laura.joya@tfauditores.com', 14);
+
 -- --------------------------------------------------------
 
 --
@@ -297,25 +355,27 @@ CREATE TABLE `usuarios_r` (
   `telefono` varchar(15) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
   `lugar_nacimiento` varchar(255) DEFAULT NULL,
-  `fecha_expedicion_cedula` date DEFAULT NULL,
   `direccion` varchar(255) DEFAULT NULL,
+  `fecha_expedicion_cedula` date DEFAULT NULL,
   `correo` varchar(255) DEFAULT NULL,
   `municipio_residencia` varchar(50) NOT NULL,
   `nombre_contacto` varchar(255) DEFAULT NULL,
   `telefono_contacto` varchar(20) DEFAULT NULL,
   `tipo_sangre` varchar(60) DEFAULT NULL,
   `eps` varchar(60) DEFAULT NULL,
-  `arl` varchar(60) DEFAULT NULL,
   `fondo_pension` varchar(50) DEFAULT NULL,
+  `arl` varchar(60) DEFAULT NULL,
   `hoja_vida` varchar(255) DEFAULT NULL,
   `subir_cedula` varchar(255) DEFAULT NULL,
-  `certificados_estudio` varchar(255) DEFAULT NULL,
   `certificados_laborales` varchar(255) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
   `certificados_eps` varchar(255) NOT NULL,
+  `certificados_estudio` varchar(255) DEFAULT NULL,
   `carnet_vacunas` varchar(255) DEFAULT NULL,
   `certificacion_bancaria` varchar(255) DEFAULT NULL,
-  `certificado_antecedentes` varchar(255) DEFAULT NULL,
+  `	cert_antecedente_policia` varchar(255) DEFAULT NULL,
+  `cert_antecedente_contraloria` varchar(255) DEFAULT NULL,
+  `cert_antecedente_procuraduria` varchar(255) DEFAULT NULL,
   `certificado_afp` varchar(255) NOT NULL,
   `certificados_territorialidad` varchar(255) DEFAULT NULL,
   `talla_camisa` varchar(10) DEFAULT NULL,
@@ -323,8 +383,19 @@ CREATE TABLE `usuarios_r` (
   `talla_botas` varchar(10) DEFAULT NULL,
   `talla_nomex` varchar(10) DEFAULT NULL,
   `enviado` varchar(50) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `estado_civil` varchar(50) NOT NULL,
+  `nombre_pareja` varchar(50) NOT NULL,
+  `tiene_hijos` varchar(50) NOT NULL,
+  `cuantos_hijos` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios_r`
+--
+
+INSERT INTO `usuarios_r` (`id`, `nombres`, `apellidos`, `genero`, `cedula`, `telefono`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `fecha_expedicion_cedula`, `correo`, `municipio_residencia`, `nombre_contacto`, `telefono_contacto`, `tipo_sangre`, `eps`, `fondo_pension`, `arl`, `hoja_vida`, `subir_cedula`, `certificados_laborales`, `foto`, `certificados_eps`, `certificados_estudio`, `carnet_vacunas`, `certificacion_bancaria`, `	cert_antecedente_policia`, `cert_antecedente_contraloria`, `cert_antecedente_procuraduria`, `certificado_afp`, `certificados_territorialidad`, `talla_camisa`, `talla_pantalon`, `talla_botas`, `talla_nomex`, `enviado`, `created_at`, `estado_civil`, `nombre_pareja`, `tiene_hijos`, `cuantos_hijos`) VALUES
+(39, 'Cristian Alejandro', 'Jimenez Mora', 'masculino', '1012329993', '3234909423', '2005-02-08', 'BOGOTÁ D.C.', 'CR 15 B 18 55 SUR CASA', '2023-03-13', 'cristian.mora3808@gmail.com', 'SOACHA', 'Yanneth Mora', '3234909423', 'O+', 'CAPITAL SALUD', 'Skandia', 'AXA COLPATRIA', 'uploads/hoja de vida.pdf', '../../uploads/CC Cristian Jiménez.pdf', 'uploads/CC Cristian Jiménez.pdf', 'uploads/foto 3x2.jpg', 'uploads/CC Cristian Jiménez.pdf', 'uploads/CC Cristian Jiménez.pdf', 'uploads/Certificado Diploma de Reconocimiento Profesional Negro y Dorado.pdf', 'uploads/Certificado Diploma de Reconocimiento Profesional Negro y Dorado.pdf', 'uploads/Certificado Diploma de Reconocimiento Profesional Negro y Dorado.pdf', '', '', 'uploads/Certificado Diploma de Reconocimiento Profesional Negro y Dorado.pdf', 'no', 'L', '32', '40', '42', '1', '2025-04-07 16:19:36', 'soltero', '', 'no', 0);
 
 --
 -- Índices para tablas volcadas
@@ -383,6 +454,13 @@ ALTER TABLE `gafas_especiales`
 --
 ALTER TABLE `guantes`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `hijos`
+--
+ALTER TABLE `hijos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `jeans_hombre`
@@ -501,6 +579,12 @@ ALTER TABLE `guantes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `hijos`
+--
+ALTER TABLE `hijos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT de la tabla `jeans_hombre`
 --
 ALTER TABLE `jeans_hombre`
@@ -528,7 +612,7 @@ ALTER TABLE `nomex`
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `tapabocas`
@@ -546,17 +630,23 @@ ALTER TABLE `tapa_oidos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_r`
 --
 ALTER TABLE `usuarios_r`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `hijos`
+--
+ALTER TABLE `hijos`
+  ADD CONSTRAINT `hijos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_r` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `proyectos`
